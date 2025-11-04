@@ -241,8 +241,8 @@
         <div class="content" id="contact-content">
             <p>N'hésitez pas à me contacter pour discuter de projets d'urbanisme durable, de collaboration ou simplement pour échanger des idées sur l'avenir des villes.</p>
             <div class="links">
-                <a href="https://linkedin.com/in/lorenzomorel">linkedin.com/in/lorenzomorel</a>
-                <a href="mailto:contact@lorenzomorel.fr">contact@lorenzomorel.fr</a>
+                <a href="https://linkedin.com/in/lorenzomorel" target="_blank">LinkedIn</a>
+                <a href="mailto:contact@lorenzomorel.fr">Email</a>
             </div>
         </div>
         <div id="contact-edit" style="display:none;">
@@ -280,7 +280,6 @@
                 contentDiv.innerHTML = textarea.value;
                 contentDiv.style.display = 'block';
                 editDiv.style.display = 'none';
-                // Save to localStorage
                 localStorage.setItem(section + '-content', textarea.value);
             }
         }
@@ -295,7 +294,6 @@
             }
         }
 
-        // Load saved content from localStorage
         window.addEventListener('load', function() {
             ['about', 'projects', 'contact'].forEach(section => {
                 const saved = localStorage.getItem(section + '-content');
@@ -308,7 +306,6 @@
             });
         });
 
-        // Smooth scrolling for navigation
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
