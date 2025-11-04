@@ -1,341 +1,137 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lorenzo Morel - Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #2d3436;
-            background: #ffffff;
-        }
-        header {
-            background: linear-gradient(135deg, #215c2e 0%, #1a4620 100%);
-            color: white;
-            text-align: center;
-            padding: 5rem 2rem;
-            box-shadow: 0 4px 12px rgba(33, 92, 46, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            position: relative;
-            z-index: 1;
-        }
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            position: relative;
-            z-index: 1;
-        }
-        nav {
-            background: #215c2e;
-            padding: 1rem;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 1.5rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-        nav a:hover {
-            opacity: 0.8;
-        }
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        section {
-            margin: 3rem 0;
-        }
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #215c2e;
-            border-bottom: 3px solid #215c2e;
-            padding-bottom: 1rem;
-        }
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        .project-card {
-            background: linear-gradient(135deg, #1a4620 0%, #215c2e 100%);
-            border-radius: 12px;
-            padding: 2rem;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid #0d2510;
-            box-shadow: 0 4px 15px rgba(33, 92, 46, 0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            min-height: 250px;
-            justify-content: space-between;
-        }
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 25px rgba(33, 92, 46, 0.4);
-            background: linear-gradient(135deg, #215c2e 0%, #2d7a3f 100%);
-        }
-        .project-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-        .project-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        .project-summary {
-            font-size: 0.95rem;
-            opacity: 0.9;
-            line-height: 1.5;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            animation: fadeIn 0.3s;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .modal.show {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-            position: relative;
-            animation: slideIn 0.3s;
-        }
-        @keyframes slideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid #215c2e;
-            padding-bottom: 1rem;
-        }
-        .modal-header h2 {
-            color: #215c2e;
-            margin: 0;
-        }
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #215c2e;
-            padding: 0;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s;
-        }
-        .close-btn:hover {
-            transform: scale(1.2);
-        }
-        .modal-body {
-            min-height: 300px;
-            padding: 1.5rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border: 2px dashed #215c2e;
-            color: #666;
-        }
-        .modal-body p {
-            color: #999;
-            font-style: italic;
-            text-align: center;
-        }
-        footer {
-            background: #215c2e;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lorenzo Morel - Portfolio</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #d7f1e6; background: #19281e; }
+    header { background: linear-gradient(135deg, #215c2e 0%, #19281e 100%); color: white; text-align: center; padding: 5rem 2rem; box-shadow: 0 4px 12px rgba(33, 92, 46, 0.3); position: relative; overflow: hidden; }
+    header::before { content: ""; display: block; position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: url('https://i.imgur.com/GzZFxiF.png') center/cover no-repeat; opacity: 0.12; z-index: 0; }
+    header h1 { font-size: 3.5rem; margin-bottom: 0.5rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); position: relative; z-index: 1; }
+    header p { font-size: 1.5rem; margin-bottom: 1.3rem; position: relative; z-index: 1; }
+    main { max-width: 950px; margin: 3rem auto 6rem auto; padding: 0 1rem; }
+    section.projects { margin-top: 4rem; }
+    h2 { color: #90e0a1; margin-bottom: 2.2rem; font-size: 2.1em; text-align: left; letter-spacing: 1px; }
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.3rem; }
+    @media (max-width: 900px) {
+        .projects-grid { grid-template-columns: 1fr; }
+    }
+    .project-card {
+        background: #234427; border-radius: 15px; box-shadow: 0 4px 18px rgba(0,20,10,0.18); padding: 2.2rem 2rem 1.8rem 2rem; position: relative; transition: transform 0.16s; cursor: pointer;
+        outline: 3px solid transparent; border: 1px solid #38683d; }
+    .project-card:hover {
+        transform: translateY(-2px) scale(1.012); box-shadow: 0 8px 32px rgba(30,96,53,0.20);
+        border-color: #51ad63;
+    }
+    .project-title { color: #eaf7ef; font-size: 1.28rem; margin-bottom: 0.5rem; font-weight: 600; }
+    .project-description { color: #b7e2c4; font-size: 1.08rem; margin-bottom: 1.3rem; }
+    .project-tags { margin-bottom: 0.5rem; }
+    .tag { background: #337c4e; color: #eafee7; border-radius: 7px; font-size: 0.88em; padding: 3px 10px; margin-right: 7px; }
+    .card-action { position: absolute; right: 18px; bottom: 18px; z-index: 1; }
+    .card-action button { background: #1c3820; color: #6af585; border: none; padding: 8px 16px; border-radius: 7px; font-size: 1em; cursor: pointer; transition: background 0.14s; }
+    .card-action button:hover { background: #3ea855; color: #fff; }
+    /* Modal Styles */
+    .modal-bg { display: none; position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(26,60,35,0.90); z-index: 9000; align-items: center; justify-content: center; }
+    .modal-bg.active { display: flex; }
+    .modal { background: #214d2a; border-radius: 21px; max-width: 680px; width: 93vw; padding: 3rem 2rem; color: #f2fff5; box-shadow: 0 4px 32px 0 rgba(33,92,46,0.42); position: relative; text-align: left; }
+    .modal h3 { color: #adf4ba; font-size: 1.6em; margin-bottom: 0.7em; }
+    .modal .close-btn { position: absolute; right: 25px; top: 25px; background: #193823; color: #a9f7c9; border: none; font-size: 1.52em; border-radius: 50%; width: 39px; height: 39px; cursor: pointer; transition: background 0.13s; }
+    .modal .close-btn:hover { background: #2f6b43; color: #f3fff4; }
+    .modal-content-large { min-height: 160px; background: #23572c; border-radius: 9px; padding: 1.3em 1em; color: #9aecbe; margin-top: 1.2em; }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Lorenzo Morel</h1>
-        <p>Développeur Créatif | Portfolio Interactif</p>
-    </header>
-
-    <nav>
-        <a href="#about">À propos</a>
-        <a href="#projects">Projets</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <main>
-        <section id="about">
-            <h2>À propos</h2>
-            <p>Bienvenue sur mon portfolio ! Je suis un développeur passionné par la création de solutions innovantes et élégantes.</p>
-        </section>
-
-        <section id="projects">
-            <h2>Mes Projets</h2>
-            <div class="projects-grid">
-                <div class="project-card" onclick="openModal('project1')">
-                    <span class="project-icon">💻</span>
-                    <h3 class="project-title">Projet 1</h3>
-                    <p class="project-summary">Description courte de votre premier projet</p>
+<header>
+    <h1>Lorenzo Morel</h1>
+    <p>Urbaniste durable &amp; Concepteur d'espaces urbains</p>
+</header>
+<main>
+    <section class="projects">
+        <h2>Projets urbains</h2>
+        <div class="projects-grid">
+            <div class="project-card" onclick="openModal(0)">
+                <div class="project-title">EcoQuartier Rive Verte</div>
+                <div class="project-description">Conception d’un quartier durable privilégiant mobilités douces, biodiversité, gestion intelligente de l’eau, et implication citoyenne.</div>
+                <div class="project-tags">
+                    <span class="tag">Ecoquartier</span><span class="tag">Transition écologique</span><span class="tag">Participation citoyenne</span>
                 </div>
-                <div class="project-card" onclick="openModal('project2')">
-                    <span class="project-icon">🎨</span>
-                    <h3 class="project-title">Projet 2</h3>
-                    <p class="project-summary">Description courte de votre deuxième projet</p>
-                </div>
-                <div class="project-card" onclick="openModal('project3')">
-                    <span class="project-icon">🚀</span>
-                    <h3 class="project-title">Projet 3</h3>
-                    <p class="project-summary">Description courte de votre troisième projet</p>
-                </div>
+                <div class="card-action"><button onclick="event.stopPropagation(); openModal(0);">Découvrir</button></div>
             </div>
-        </section>
-
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Contactez-moi pour discuter de vos projets ou collaborations.</p>
-        </section>
-    </main>
-
-    <div id="project1" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Projet 1</h2>
-                <button class="close-btn" onclick="closeModal('project1')">&times;</button>
+            <div class="project-card" onclick="openModal(1)">
+                <div class="project-title">Parc linéaire du Renouveau</div>
+                <div class="project-description">Transformation d’une friche industrielle en parc linéaire : corridors écologiques, circulations douces, et reconversion patrimoniale.</div>
+                <div class="project-tags">
+                    <span class="tag">Renaturation</span><span class="tag">Friche</span><span class="tag">Activités urbaines mixtes</span>
+                </div>
+                <div class="card-action"><button onclick="event.stopPropagation(); openModal(1);">Découvrir</button></div>
             </div>
-            <div class="modal-body">
-                <p>Zone de contenu modifiable - Vous pouvez ajouter vos cartes, photos, texte et autres éléments ici. Copiez-collez vos contenus pour les ajouter ultérieurement.</p>
+            <div class="project-card" onclick="openModal(2)">
+                <div class="project-title">Bouleversement Place Centrale</div>
+                <div class="project-description">Réaménagement de place urbaine : apaisement de la circulation, espaces de convivialité, végétalisation massive, et activation culturelle.</div>
+                <div class="project-tags">
+                    <span class="tag">Design urbain</span><span class="tag">Mobilier</span><span class="tag">Animation</span>
+                </div>
+                <div class="card-action"><button onclick="event.stopPropagation(); openModal(2);">Découvrir</button></div>
+            </div>
+            <div class="project-card" onclick="openModal(3)">
+                <div class="project-title">Résilience Quartier Lumière</div>
+                <div class="project-description">Plan-guide résilient : gestion des îlots de chaleur, trames vertes-bleues, dialogue habitants, et flexibilité programmatique.</div>
+                <div class="project-tags">
+                    <span class="tag">Résilience</span><span class="tag">Paysage</span><span class="tag">Dialogue habitants</span>
+                </div>
+                <div class="card-action"><button onclick="event.stopPropagation(); openModal(3);">Découvrir</button></div>
             </div>
         </div>
+    </section>
+</main>
+<!-- Modal Infrastructure (populated dynamically)-->
+<div id="modalBackground" class="modal-bg">
+    <div class="modal" id="modalContent">
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+        <h3 id="modalTitle"></h3>
+        <div id="modalDescription"></div>
+        <div class="modal-content-large" id="modalExtra"></div>
     </div>
-
-    <div id="project2" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Projet 2</h2>
-                <button class="close-btn" onclick="closeModal('project2')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>Zone de contenu modifiable - Vous pouvez ajouter vos cartes, photos, texte et autres éléments ici. Copiez-collez vos contenus pour les ajouter ultérieurement.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="project3" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Projet 3</h2>
-                <button class="close-btn" onclick="closeModal('project3')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>Zone de contenu modifiable - Vous pouvez ajouter vos cartes, photos, texte et autres éléments ici. Copiez-collez vos contenus pour les ajouter ultérieurement.</p>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2024 Lorenzo Morel. Tous droits réservés.</p>
-    </footer>
-
-    <script>
-        function openModal(projectId) {
-            const modal = document.getElementById(projectId);
-            if (modal) {
-                modal.classList.add('show');
-            }
+</div>
+<script>
+    // Data for modals (rich, detailed, can be expanded later)
+    const modalProjects = [
+        {
+            title: 'EcoQuartier Rive Verte',
+            description: "Le projet vise à réconcilier ville et nature grâce à une mosaïque de micro-habitats, une gestion innovante des eaux pluviales, des espaces partagés végétalisés, et un urbanisme centré sur l’humain. Concertation avec riverains & ateliers participatifs inclus.",
+            extra: "<b>Concept-clefs:</b>\nMobilités douces, solutions fondées sur la nature, verdissement intensif, jardins pédagogiques, toitures végétalisées, énergies renouvelables, mixité sociale.\n<b>Partenaires:</b> Ville, architectes, associations locales. <br><br>Ce projet fait l’objet d’un suivi écologique et d’animations régulières auprès des habitants (ateliers enfants, jardins collectifs, parcours biodiversité, etc.)."
+        },
+        {
+            title: 'Parc linéaire du Renouveau',
+            description: "Renaturation d’une friche et transformation en corridor écologique. Parcours sensoriels, pontons, mobilier recyclé, plateforme d’agriculture urbaine, valorisation mémoire industrielle (parcours historique et expositions).\n<b>Étapes réalisées:</b> Diagnostic biodiversité, stratégie de gestion différenciée, animation associative.",
+            extra: "<b>Atouts:</b>\nGestion hydraulique naturelle (noues, zone humide restaurée), sentiers piétons-vélos, aires sportives, belvédère urbain, fauche tardive, nouveau lien entre deux quartiers.<br><br>Le parc est conçu comme support de reconnexion sociale et de santé, avec de nombreux ateliers familiaux saisonniers."
+        },
+        {
+            title: 'Bouleversement Place Centrale',
+            description: "Ré-imaginer une place centrale : piétonnisation, événements artistiques, marchés ponctuels, et mobilier urbain écoresponsable.\n<b>Principes:</b> Accessibilité universelle, convivialité, connecteurs verts, gestion microclimatique.",
+            extra: "<b>Innovations:</b>\nFontaines à circulation fermée pour économie d’eau, programme d’ombrage dense/végétal, ‘micro-places’ à thématique variable, pilotage numérique participatif.\n<b>Impact:</b> Hausse de la fréquentation, retour positif des usagers, attractivité renouvelée du cœur de ville."
+        },
+        {
+            title: 'Résilience Quartier Lumière',
+            description: "Un plan-guide pour renforcer la résilience urbaine : création de corridors verts-bleus, gestion adaptative du bâti, implication scolaire, flexibilité d’usages publics. Tracks inondation/îlot de chaleur, ateliers citoyen à chaque étape.",
+            extra: "<b>Focus:</b>\nCartographie précise des vulnérabilités, outils de suivi climatique, ‘laboratoire de rue’ pour tester nouveaux usages, espaces modulables.<br><br>Le quartier sert de pilote à la stratégie climat de la ville avec des bilans réguliers et ‘assemblées d’habitants’."
         }
-
-        function closeModal(projectId) {
-            const modal = document.getElementById(projectId);
-            if (modal) {
-                modal.classList.remove('show');
-            }
-        }
-
-        // Close modal when clicking outside the modal-content
-        document.addEventListener('click', function(event) {
-            if (event.target.classList.contains('modal')) {
-                const modal = event.target;
-                modal.classList.remove('show');
-            }
-        });
-
-        // Close modal on Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                document.querySelectorAll('.modal.show').forEach(modal => {
-                    modal.classList.remove('show');
-                });
-            }
-        });
-
-        // Smooth scroll for navigation
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
+    ];
+    function openModal(index) {
+        document.getElementById('modalTitle').innerHTML = modalProjects[index].title;
+        document.getElementById('modalDescription').innerHTML = modalProjects[index].description;
+        document.getElementById('modalExtra').innerHTML = modalProjects[index].extra;
+        document.getElementById('modalBackground').classList.add('active');
+    }
+    function closeModal() {
+        document.getElementById('modalBackground').classList.remove('active');
+    }
+    // Keyboard shortcut to close modal
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') { closeModal(); }
+    });
+</script>
 </body>
 </html>
