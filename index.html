@@ -2,134 +2,202 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lorenzo Morel - Portfolio</title>
   <style>
-    /* ... (keep all your previous CSS content unchanged) ... */
+    /* ... (garder ton CSS d'origine ici, pour la mise en page) ... */
   </style>
 </head>
 <body>
-    <header>
-        <h1 id="header-title">Lorenzo Morel</h1>
-        <p id="header-desc">Urbaniste durable & Concepteur d'espaces urbains</p>
-    </header>
-    <main>
-        <!-- Section À propos -->
-        <section style="background:#fff; padding:2.3rem 2rem 2.3rem 2rem; border-radius: 18px; max-width: 850px; margin: 2rem auto 3.2rem auto; box-shadow: 0 2px 10px rgba(33,92,46,0.08); border: 1.5px solid #215c2e;">
-            <h2 style="display: inline;">À propos</h2>
-            <button class="edit-btn" onclick="toggleEdit('about')">Modifier</button>
-            <div id="about-container">
-                <p id="about-text">
-                    Urbaniste passionné par la fabrique de villes résilientes, inclusives et vivantes, j'accompagne collectivités et acteurs locaux dans la transition écologique des territoires.<br>
-                    Parcours : diplômé en urbanisme à l'Université de Lyon III, j'ai consolidé mon expérience sur des projets d'écoquartiers, de renaturation urbaine et de concertation citoyenne, en France comme à l'international.<br>
-                    Vision & domaine : mon approche allie design urbain durable, gestion des ressources naturelles et participation active des usagers. J'aime concevoir des espaces qui encouragent la biodiversité, la mobilité douce et le vivre-ensemble.<br>
-                    Mes valeurs : écoute, créativité, pragmatisme, et recherche d'impact positif à chaque étape du projet. J'interviens sur des missions allant du plan-guide à l'animation de démarches collaboratives et à la conception d'espaces publics.
-                </p>
-            </div>
-            <button class="save-btn" id="save-about" onclick="saveEdit('about')" style="display:none;">Enregistrer</button>
-        </section>
-        <!-- Section Projets urbains -->
-        <section class="projects">
-            <h2 style="display: inline;">Projets urbains</h2>
-            <div class="projects-grid">
-                <!-- Carte 1 -->
-                <div class="project-card">
-                    <div id="proj1-container">
-                        <div class="project-title" id="proj1-title">Ecoquartier Lyon</div>
-                        <div class="project-description" id="proj1-desc">Conception d'espaces verts et renaturation, participation citoyenne, mobilité douce.</div>
-                        <div class="project-tags" id="proj1-tags"><span class="tag">Renaturation</span><span class="tag">Mobilité douce</span><span class="tag">Concertation</span></div>
-                    </div>
-                    <button class="edit-btn" onclick="toggleEdit('proj1')" style="position:absolute;top:10px;right:10px;z-index:2;">Modifier</button>
-                    <button class="save-btn" id="save-proj1" onclick="saveEdit('proj1')" style="display:none;position:absolute;top:44px;right:10px;z-index:2;">Enregistrer</button>
-                    <div class="card-action"><button onclick="showModal('ecoquartier')">Voir +</button></div>
-                </div>
-                <!-- Carte 2 -->
-                <div class="project-card">
-                    <div id="proj2-container">
-                        <div class="project-title" id="proj2-title">Parc urbain Nantes</div>
-                        <div class="project-description" id="proj2-desc">Transformation d’une friche ferroviaire en parc urbain inclusif et biodiversifié.</div>
-                        <div class="project-tags" id="proj2-tags"><span class="tag">Biodiversité</span><span class="tag">Design durable</span></div>
-                    </div>
-                    <button class="edit-btn" onclick="toggleEdit('proj2')" style="position:absolute;top:10px;right:10px;z-index:2;">Modifier</button>
-                    <button class="save-btn" id="save-proj2" onclick="saveEdit('proj2')" style="display:none;position:absolute;top:44px;right:10px;z-index:2;">Enregistrer</button>
-                    <div class="card-action"><button onclick="showModal('parcUrban')">Voir +</button></div>
-                </div>
-            </div>
-            <!-- Modals (Pop-ups) -->
-            <div class="modal-bg" id="modal-bg">
-                <div class="modal" id="modal-content">
-                    <button class="close-btn" onclick="closeModal()">×</button>
-                    <div id="modal-text"></div>
-                </div>
-            </div>
-        </section>
-        <!-- Section Contact -->
-        <section class="contact-section">
-            <h2 style="display: inline;">Contact</h2>
-            <button class="edit-btn" onclick="toggleEdit('contact')">Modifier</button>
-            <div class="contact-links" id="contact-links">
-                <a class="contact-link" href="https://www.linkedin.com/in/lorenzomorel77" id="contact-linkedin" target="_blank">LinkedIn</a>
-                <a class="contact-link" href="mailto:lorenzomorel77@gmail.com" id="contact-mail">Email</a>
-            </div>
-            <button class="save-btn" id="save-contact" onclick="saveEdit('contact')" style="display:none;">Enregistrer</button>
-        </section>
-    </main>
-    <script>
-    // In-place editing for portfolio sections
+  <header>
+    <h1 id="header-title">Lorenzo Morel</h1>
+    <p id="header-desc">Urbaniste durable & Concepteur d'espaces urbains</p>
+  </header>
+  <main>
+    <!-- À propos -->
+    <section style="background:#fff; padding:2.3rem 2rem; border-radius:18px; max-width:850px; margin:2rem auto 3.2rem auto; box-shadow:0 2px 10px rgba(33,92,46,0.08); border:1.5px solid #215c2e;">
+      <h2 style="display:inline;">À propos</h2>
+      <button class="edit-btn" onclick="toggleEdit('about')">Modifier</button>
+      <div id="about-container">
+        <p id="about-text">Urbaniste passionné par la fabrique de villes résilientes, inclusives et vivantes, j'accompagne collectivités et acteurs locaux dans la transition écologique des territoires.<br>Parcours : diplômé en urbanisme à l'Université de Lyon III, j'ai consolidé mon expérience sur des projets d'écoquartiers, de renaturation urbaine et de concertation citoyenne, en France comme à l'international.<br>Vision & domaine : mon approche allie design urbain durable, gestion des ressources naturelles et participation active des usagers. J'aime concevoir des espaces qui encouragent la biodiversité, la mobilité douce et le vivre-ensemble.<br>Mes valeurs : écoute, créativité, pragmatisme, et recherche d'impact positif à chaque étape du projet. J'interviens sur des missions allant du plan-guide à l'animation de démarches collaboratives et à la conception d'espaces publics.</p>
+      </div>
+      <button class="save-btn" id="save-about" onclick="saveEdit('about')" style="display:none;">Enregistrer</button>
+    </section>
+    <!-- Projets urbains -->
+    <section class="projects">
+      <h2 style="display:inline;">Projets urbains</h2>
+      <div class="projects-grid">
+        <!-- Carte 1 -->
+        <div class="project-card">
+          <div id="proj1-container">
+            <div class="project-title" id="proj1-title">Ecoquartier Lyon</div>
+            <div class="project-description" id="proj1-desc">Conception d'espaces verts et renaturation, participation citoyenne, mobilité douce.</div>
+            <div class="project-tags" id="proj1-tags"><span class="tag">Renaturation</span><span class="tag">Mobilité douce</span><span class="tag">Concertation</span></div>
+          </div>
+          <button class="edit-btn" onclick="toggleEdit('proj1')" style="position:absolute;top:10px;right:10px;z-index:2;">Modifier</button>
+          <button class="save-btn" id="save-proj1" onclick="saveEdit('proj1')" style="display:none;position:absolute;top:44px;right:10px;z-index:2;">Enregistrer</button>
+          <div class="card-action"><button onclick="showModal('ecoquartier')">Voir +</button></div>
+        </div>
+        <!-- Carte 2 -->
+        <div class="project-card">
+          <div id="proj2-container">
+            <div class="project-title" id="proj2-title">Parc urbain Nantes</div>
+            <div class="project-description" id="proj2-desc">Transformation d’une friche ferroviaire en parc urbain inclusif et biodiversifié.</div>
+            <div class="project-tags" id="proj2-tags"><span class="tag">Biodiversité</span><span class="tag">Design durable</span></div>
+          </div>
+          <button class="edit-btn" onclick="toggleEdit('proj2')" style="position:absolute;top:10px;right:10px;z-index:2;">Modifier</button>
+          <button class="save-btn" id="save-proj2" onclick="saveEdit('proj2')" style="display:none;position:absolute;top:44px;right:10px;z-index:2;">Enregistrer</button>
+          <div class="card-action"><button onclick="showModal('parcUrban')">Voir +</button></div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact -->
+    <section class="contact-section">
+      <h2 style="display:inline;">Contact</h2>
+      <button class="edit-btn" onclick="toggleEdit('contact')">Modifier</button>
+      <div class="contact-links" id="contact-links">
+        <a class="contact-link" href="https://www.linkedin.com/in/lorenzomorel77" id="contact-linkedin" target="_blank">LinkedIn</a>
+        <a class="contact-link" href="mailto:lorenzomorel77@gmail.com" id="contact-mail">Email</a>
+      </div>
+      <button class="save-btn" id="save-contact" onclick="saveEdit('contact')" style="display:none;">Enregistrer</button>
+    </section>
+  </main>
+  <script>
+    // Edition non destructive!
     function toggleEdit(section) {
-        if (section === 'about') {
-            let about = document.getElementById('about-text');
-            let container = document.getElementById('about-container');
-            let btn = document.getElementById('save-about');
-            const text = about.innerText;
-            container.innerHTML = `<textarea id='about-edit' style='width:100%;min-height:120px;'>${text}</textarea>`;
-            btn.style.display = '';
-        } else if (section === 'proj1') {
-            let t = document.getElementById('proj1-title').innerText;
-            let d = document.getElementById('proj1-desc').innerText;
-            let container = document.getElementById('proj1-container');
-            container.innerHTML = `<input id='proj1-title-edit' value="${t}" style='width:95%;margin-bottom:0.6em;font-size:1em;'/><textarea id='proj1-desc-edit' style='width:100%;min-height:70px;'>${d}</textarea>`;
-            document.getElementById('save-proj1').style.display = '';
-        } else if (section === 'proj2') {
-            let t = document.getElementById('proj2-title').innerText;
-            let d = document.getElementById('proj2-desc').innerText;
-            let container = document.getElementById('proj2-container');
-            container.innerHTML = `<input id='proj2-title-edit' value="${t}" style='width:95%;margin-bottom:0.6em;font-size:1em;'/><textarea id='proj2-desc-edit' style='width:100%;min-height:70px;'>${d}</textarea>`;
-            document.getElementById('save-proj2').style.display = '';
-        } else if (section === 'contact') {
-            let l = document.getElementById('contact-linkedin').innerText;
-            let lHref = document.getElementById('contact-linkedin').href;
-            let m = document.getElementById('contact-mail').innerText;
-            let mHref = document.getElementById('contact-mail').href.replace('mailto:', '');
-            let container = document.getElementById('contact-links');
-            container.innerHTML = `<input id='contact-linkedin-edit' value="${l}" style='width:44%;margin-bottom:0.7em;'/> <input id='contact-linkedin-href-edit' value="${lHref}" style='width:52%;margin-bottom:0.7em;'/><br><input id='contact-mail-edit' value="${m}" style='width:44%;margin-bottom:0.7em;'/><input id='contact-mail-href-edit' value="${mHref}" style='width:52%;margin-bottom:0.7em;'/><br>`;
-            document.getElementById('save-contact').style.display = '';
-        }
+      if (section === 'about') {
+        let about = document.getElementById('about-text');
+        let container = document.getElementById('about-container');
+        let btn = document.getElementById('save-about');
+        container.querySelectorAll('textarea').forEach(e => e.remove()); // Clean old
+        let textarea = document.createElement('textarea');
+        textarea.id = 'about-edit';
+        textarea.style.width = '100%';
+        textarea.style.minHeight = '120px';
+        textarea.value = about.innerText;
+        about.style.display = 'none';
+        container.appendChild(textarea);
+        btn.style.display = '';
+      } else if (section === 'proj1') {
+        let title = document.getElementById('proj1-title');
+        let desc = document.getElementById('proj1-desc');
+        let container = document.getElementById('proj1-container');
+        [container.querySelector('#proj1-title-edit'), container.querySelector('#proj1-desc-edit')].forEach(e => {if(e) e.remove();}); // Clean
+        let inputTitle = document.createElement('input');
+        inputTitle.id = 'proj1-title-edit';
+        inputTitle.value = title.innerText;
+        inputTitle.style.width = '95%';
+        inputTitle.style.marginBottom = '0.6em';
+        inputTitle.style.fontSize = '1em';
+        let textareaDesc = document.createElement('textarea');
+        textareaDesc.id = 'proj1-desc-edit';
+        textareaDesc.style.width = '100%';
+        textareaDesc.style.minHeight = '70px';
+        textareaDesc.value = desc.innerText;
+        title.style.display = 'none';
+        desc.style.display = 'none';
+        container.insertBefore(inputTitle, container.querySelector('#proj1-tags'));
+        container.insertBefore(textareaDesc, container.querySelector('#proj1-tags'));
+        document.getElementById('save-proj1').style.display = '';
+      } else if (section === 'proj2') {
+        let title = document.getElementById('proj2-title');
+        let desc = document.getElementById('proj2-desc');
+        let container = document.getElementById('proj2-container');
+        [container.querySelector('#proj2-title-edit'), container.querySelector('#proj2-desc-edit')].forEach(e => {if(e) e.remove();});
+        let inputTitle = document.createElement('input');
+        inputTitle.id = 'proj2-title-edit';
+        inputTitle.value = title.innerText;
+        inputTitle.style.width = '95%';
+        inputTitle.style.marginBottom = '0.6em';
+        inputTitle.style.fontSize = '1em';
+        let textareaDesc = document.createElement('textarea');
+        textareaDesc.id = 'proj2-desc-edit';
+        textareaDesc.style.width = '100%';
+        textareaDesc.style.minHeight = '70px';
+        textareaDesc.value = desc.innerText;
+        title.style.display = 'none';
+        desc.style.display = 'none';
+        container.insertBefore(inputTitle, container.querySelector('#proj2-tags'));
+        container.insertBefore(textareaDesc, container.querySelector('#proj2-tags'));
+        document.getElementById('save-proj2').style.display = '';
+      } else if (section === 'contact') {
+        let l = document.getElementById('contact-linkedin');
+        let m = document.getElementById('contact-mail');
+        let container = document.getElementById('contact-links');
+        [container.querySelector('#contact-linkedin-edit'),container.querySelector('#contact-linkedin-href-edit'),container.querySelector('#contact-mail-edit'),container.querySelector('#contact-mail-href-edit')].forEach(e=>{if(e)e.remove();});
+        let inputLText = document.createElement('input');
+        inputLText.id='contact-linkedin-edit';
+        inputLText.value=l.innerText;
+        inputLText.style.width='44%'; inputLText.style.marginBottom='0.7em';
+        let inputLHref = document.createElement('input');
+        inputLHref.id='contact-linkedin-href-edit';
+        inputLHref.value=l.href;
+        inputLHref.style.width='52%'; inputLHref.style.marginBottom='0.7em';
+        let inputMText = document.createElement('input');
+        inputMText.id='contact-mail-edit'; inputMText.value=m.innerText;
+        inputMText.style.width='44%'; inputMText.style.marginBottom='0.7em';
+        let inputMHref = document.createElement('input');
+        inputMHref.id='contact-mail-href-edit'; inputMHref.value=m.href.replace('mailto:',''); inputMHref.style.width='52%'; inputMHref.style.marginBottom='0.7em';
+        l.style.display='none'; m.style.display='none';
+        container.appendChild(inputLText); container.appendChild(inputLHref);
+        container.appendChild(document.createElement('br'));
+        container.appendChild(inputMText); container.appendChild(inputMHref);
+        container.appendChild(document.createElement('br'));
+        document.getElementById('save-contact').style.display = '';
+      }
     }
     function saveEdit(section) {
-        if (section === 'about') {
-            let v = document.getElementById('about-edit').value;
-            document.getElementById('about-container').innerHTML = `<p id='about-text'>${v.replace(/\n/g,'<br>')}</p>`;
-            document.getElementById('save-about').style.display = 'none';
-        } else if (section === 'proj1') {
-            let t = document.getElementById('proj1-title-edit').value;
-            let d = document.getElementById('proj1-desc-edit').value;
-            document.getElementById('proj1-container').innerHTML = `<div class='project-title' id='proj1-title'>${t}</div><div class='project-description' id='proj1-desc'>${d}</div><div class='project-tags' id='proj1-tags'><span class='tag'>Renaturation</span><span class='tag'>Mobilité douce</span><span class='tag'>Concertation</span></div>`;
-            document.getElementById('save-proj1').style.display = 'none';
-        } else if (section === 'proj2') {
-            let t = document.getElementById('proj2-title-edit').value;
-            let d = document.getElementById('proj2-desc-edit').value;
-            document.getElementById('proj2-container').innerHTML = `<div class='project-title' id='proj2-title'>${t}</div><div class='project-description' id='proj2-desc'>${d}</div><div class='project-tags' id='proj2-tags'><span class='tag'>Biodiversité</span><span class='tag'>Design durable</span></div>`;
-            document.getElementById('save-proj2').style.display = 'none';
-        } else if (section === 'contact') {
-            let lText = document.getElementById('contact-linkedin-edit').value;
-            let lHref = document.getElementById('contact-linkedin-href-edit').value;
-            let mText = document.getElementById('contact-mail-edit').value;
-            let mHref = document.getElementById('contact-mail-href-edit').value;
-            document.getElementById('contact-links').innerHTML = `<a class='contact-link' href='${lHref}' id='contact-linkedin' target='_blank'>${lText}</a><a class='contact-link' href='mailto:${mHref}' id='contact-mail'>${mText}</a>`;
-            document.getElementById('save-contact').style.display = 'none';
-        }
+      if (section === 'about') {
+        let v = document.getElementById('about-edit').value;
+        let about = document.getElementById('about-text');
+        about.innerHTML = v.replace(/\n/g,'<br>');
+        about.style.display = '';
+        document.getElementById('about-edit').remove();
+        document.getElementById('save-about').style.display = 'none';
+      } else if (section === 'proj1') {
+        let t = document.getElementById('proj1-title-edit').value;
+        let d = document.getElementById('proj1-desc-edit').value;
+        let title = document.getElementById('proj1-title');
+        let desc = document.getElementById('proj1-desc');
+        title.innerHTML = t;
+        desc.innerHTML = d;
+        title.style.display = '';
+        desc.style.display = '';
+        document.getElementById('proj1-title-edit').remove();
+        document.getElementById('proj1-desc-edit').remove();
+        document.getElementById('save-proj1').style.display = 'none';
+      } else if (section === 'proj2') {
+        let t = document.getElementById('proj2-title-edit').value;
+        let d = document.getElementById('proj2-desc-edit').value;
+        let title = document.getElementById('proj2-title');
+        let desc = document.getElementById('proj2-desc');
+        title.innerHTML = t;
+        desc.innerHTML = d;
+        title.style.display = '';
+        desc.style.display = '';
+        document.getElementById('proj2-title-edit').remove();
+        document.getElementById('proj2-desc-edit').remove();
+        document.getElementById('save-proj2').style.display = 'none';
+      } else if (section === 'contact') {
+        let lText = document.getElementById('contact-linkedin-edit').value;
+        let lHref = document.getElementById('contact-linkedin-href-edit').value;
+        let mText = document.getElementById('contact-mail-edit').value;
+        let mHref = document.getElementById('contact-mail-href-edit').value;
+        let l = document.getElementById('contact-linkedin');
+        let m = document.getElementById('contact-mail');
+        l.innerText = lText;
+        l.href = lHref;
+        m.innerText = mText;
+        m.href = 'mailto:' + mHref;
+        l.style.display = '';
+        m.style.display = '';
+        document.getElementById('contact-linkedin-edit').remove();
+        document.getElementById('contact-linkedin-href-edit').remove();
+        document.getElementById('contact-mail-edit').remove();
+        document.getElementById('contact-mail-href-edit').remove();
+        document.getElementById('save-contact').style.display = 'none';
+      }
     }
-    </script>
+  </script>
 </body>
 </html>
