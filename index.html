@@ -1,116 +1,112 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lorenzo Morel - Portfolio</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #ffffff; color: #333; line-height: 1.6; }
-header { background-color: #1a472a; color: #fff; padding: 3rem 2rem; text-align: center; }
-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 700; }
-header p { font-size: 1.2rem; opacity: 0.9; }
-.container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-section { margin-bottom: 4rem; }
-section h2 { color: #1a472a; font-size: 2rem; margin-bottom: 1.5rem; text-align: center; font-weight: 600; }
-.about-content { background-color: #f8f9fa; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
-.about-content p { font-size: 1.1rem; margin-bottom: 1rem; max-width: 800px; margin-left: auto; margin-right: auto; }
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-.project-card { background-color: #f8f9fa; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
-.project-card:hover { transform: translateY(-5px); box-shadow: 0 4px 20px rgba(26,71,42,0.2); }
-.project-card h3 { color: #1a472a; margin-bottom: 1rem; font-size: 1.5rem; }
-.project-card p { color: #666; margin-bottom: 1rem; }
-.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); overflow: auto; }
-.modal-content { background-color: #fff; margin: 5% auto; padding: 2rem; border-radius: 10px; max-width: 600px; position: relative; box-shadow: 0 5px 30px rgba(0,0,0,0.3); }
-.close { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
-.close:hover { color: #1a472a; }
-.contact-buttons { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
-.contact-btn { display: inline-block; padding: 1rem 2rem; background-color: #1a472a; color: #fff; text-decoration: none; border-radius: 5px; font-size: 1.1rem; font-weight: 600; transition: background-color 0.3s, transform 0.3s; }
-.contact-btn:hover { background-color: #2d6b47; transform: scale(1.05); }
-footer { background-color: #1a472a; color: #fff; text-align: center; padding: 2rem; margin-top: 3rem; }
-@media (max-width: 768px) {
-  header h1 { font-size: 2rem; }
-  .projects-grid { grid-template-columns: 1fr; }
-  .contact-buttons { flex-direction: column; align-items: center; }
-}
-</style>
+  <meta charset="UTF-8">
+  <title>Portfolio Lorenzo Morel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { background: #fff; font-family: Arial, sans-serif; color:#222; margin:0; }
+    header { background: #215c2e; color: white; padding: 30px 10px 16px 10px; text-align: center; }
+    main { max-width: 900px; margin: 22px auto 0 auto; padding: 0 9px; }
+    h1 { margin:0 0 10px 0; font-weight:700; }
+    nav { margin-top:12px;}
+    nav a { color:#215c2e; text-decoration:none; margin:0 18px; font-weight:bold;}
+    section { margin-bottom: 42px; }
+    .project-grid { display: flex; flex-wrap: wrap; gap: 18px; }
+    .project-card { background: #fff; border: 2px solid #215c2e; border-radius:8px; box-shadow:0 2px 8px #eee; padding:20px 18px; flex:1 1 290px; cursor:pointer; transition:box-shadow 0.2s;}
+    .project-card:hover{box-shadow:0 6px 16px #ccc;}
+    .project-title { font-weight: bold; color:#215c2e; margin-bottom:8px; }
+    .project-desc { margin-bottom:12px; }
+    .tag { display:inline-block; color:#fff;font-size:13px;font-weight:bold; background:#215c2e; border-radius:6px; padding:3px 9px; margin-right:6px;}
+    footer { text-align: center; font-size:15px; color: #666; margin:38px 0 0; }
+    .contact-btns a { display:inline-block; padding:8px 22px; margin:0 9px; color:#fff; background:#215c2e; border-radius:6px; text-decoration:none; font-weight:bold;}
+    @media(max-width:650px){.project-grid{flex-direction:column;}}
+    .modal-bg{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(33,92,46,0.19);display:none;align-items:center;justify-content:center;z-index:100;}
+    .modal{background:#fff;border:2px solid #215c2e;padding:28px 24px;border-radius:12px;min-width:300px;max-width:94vw;max-height:76vh;overflow-y:auto;}
+    .modal-title{font-weight:bold;font-size:21px;color:#215c2e;}
+    .modal-close{position:absolute;top:20px;right:32px;font-size:33px;cursor:pointer;color:#215c2e;}
+    .modal-content{margin-top:16px;}
+  </style>
 </head>
 <body>
-<header>
-<h1>Lorenzo Morel</h1>
-<p>Développeur Web & Designer</p>
-</header>
-<div class="container">
-<section id="about">
-<h2>À propos</h2>
-<div class="about-content">
-<p>Bonjour ! Je suis Lorenzo Morel, un développeur web passionné par la création d'expériences digitales modernes et intuitives.</p>
-<p>Je me spécialise dans le développement front-end et back-end, avec une attention particulière portée au design responsive et à l'expérience utilisateur.</p>
-<p>Mon objectif est de créer des solutions web élégantes qui répondent aux besoins des utilisateurs tout en restant performantes et accessibles.</p>
-</div>
-</section>
-<section id="projects">
-<h2>Projets</h2>
-<div class="projects-grid">
-<div class="project-card" onclick="openModal('modal1')">
-<h3>Projet 1</h3>
-<p>Application web moderne</p>
-<p><strong>Technologies:</strong> HTML, CSS, JavaScript</p>
-</div>
-<div class="project-card" onclick="openModal('modal2')">
-<h3>Projet 2</h3>
-<p>Site e-commerce responsive</p>
-<p><strong>Technologies:</strong> React, Node.js</p>
-</div>
-<div class="project-card" onclick="openModal('modal3')">
-<h3>Projet 3</h3>
-<p>Portfolio interactif</p>
-<p><strong>Technologies:</strong> HTML5, CSS3, JavaScript</p>
-</div>
-</div>
-</section>
-<section id="contact">
-<h2>Contact</h2>
-<div class="contact-buttons">
-<a href="https://www.linkedin.com/in/lorenzo-morel-566aa4233/" target="_blank" class="contact-btn">LinkedIn</a>
-<a href="mailto:lorenzomorel77@gmail.com" class="contact-btn">Email</a>
-</div>
-</section>
-</div>
-<div id="modal1" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closeModal('modal1')">&times;</span>
-<h3>Projet 1 - Détails</h3>
-<p>Description complète du projet 1. Application web moderne développée avec les dernières technologies.</p>
-<p><strong>Technologies utilisées:</strong> HTML5, CSS3, JavaScript</p>
-<p><strong>Fonctionnalités:</strong> Interface responsive, animations fluides, optimisation des performances.</p>
-</div>
-</div>
-<div id="modal2" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closeModal('modal2')">&times;</span>
-<h3>Projet 2 - Détails</h3>
-<p>Description complète du projet 2. Site e-commerce complet avec gestion de paiements et inventaire.</p>
-<p><strong>Technologies utilisées:</strong> React, Node.js, MongoDB</p>
-<p><strong>Fonctionnalités:</strong> Panier d'achat, système de paiement, gestion utilisateurs.</p>
-</div>
-</div>
-<div id="modal3" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closeModal('modal3')">&times;</span>
-<h3>Projet 3 - Détails</h3>
-<p>Description complète du projet 3. Portfolio interactif avec design moderne et animations engageantes.</p>
-<p><strong>Technologies utilisées:</strong> HTML5, CSS3, JavaScript</p>
-<p><strong>Fonctionnalités:</strong> Animations CSS, transitions fluides, design responsive.</p>
-</div>
-</div>
-<footer>
-<p>&copy; 2025 Lorenzo Morel. Tous droits réservés.</p>
-</footer>
-<script>
-function openModal(modalId) { document.getElementById(modalId).style.display = 'block'; }
-function closeModal(modalId) { document.getElementById(modalId).style.display = 'none'; }
-window.onclick = function(event) { if (event.target.className === 'modal') { event.target.style.display = 'none'; } }
-</script>
+  <header>
+    <h1>Portfolio Lorenzo Morel</h1>
+    <nav>
+      <a href="#about">À propos</a>
+      <a href="#projects">Projets</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section id="about">
+      <h2>À propos</h2>
+      <div>
+        Urbaniste passionné par la fabrique de villes résilientes et inclusives, j’ai réalisé des travaux d’études dans le cadre de mon master à Montpellier, principalement orientés vers des diagnostics territoriaux et la création de pièces graphiques à différentes échelles sur le grand territoire montpelliérain.<br>
+        Diplômé en géographie et actuellement étudiant en Master « Projet et aménagement » à l’Université Paul Valéry Montpellier 3, j’ai développé une expertise dans l’analyse des dynamiques spatiales, la gestion des ressources naturelles et la mobilité douce, tout en cherchant à promouvoir la biodiversité urbaine.<br>
+        Mon approche associe rigueur méthodologique, design urbain durable et implication des usagers afin d’imaginer des espaces vivants et fonctionnels.<br>
+        Mes travaux vont du diagnostic territorial à la réalisation de documents cartographiques et graphiques, toujours dans une perspective de transformation positive et collaborative du territoire.<br>
+        Je mets l’accent sur l’écoute, la créativité et le pragmatisme, avec pour objectif l’impact concret et l’intelligence collective à chaque étape du projet.
+      </div>
+    </section>
+    <section id="projects">
+      <h2>Projets urbains</h2>
+      <div class="project-grid">
+        <div class="project-card" onclick="openModal('proj1')">
+          <div class="project-title">Ecoquartier Lyon</div>
+          <div class="project-desc">Conception d'espaces verts et renaturation, participation citoyenne, mobilité douce.</div>
+          <span class="tag">Renaturation</span><span class="tag">Mobilité douce</span><span class="tag">Concertation</span>
+        </div>
+        <div class="project-card" onclick="openModal('proj2')">
+          <div class="project-title">Parc urbain Nantes</div>
+          <div class="project-desc">Transformation d’une friche ferroviaire en parc urbain inclusif et biodiversifié.</div>
+          <span class="tag">Biodiversité</span><span class="tag">Design durable</span>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-btns">
+        <a href="https://www.linkedin.com/in/lorenzo-morel-566aa4233/" target="_blank">LinkedIn</a>
+        <a href="mailto:lorenzomorel77@gmail.com">Email</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 Lorenzo Morel • Portfolio urbain
+  </footer>
+  <!-- Modal structure -->
+  <div class="modal-bg" id="modal-bg">
+    <div class="modal">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <div class="modal-title" id="modal-title"></div>
+      <div class="modal-content" id="modal-content"></div>
+    </div>
+  </div>
+  <script>
+    const projects = {
+      "proj1": {
+        title: "Ecoquartier Lyon",
+        content: "Zone modifiable : Ajoutez ici des visuels, cartes, textes sur le projet Ecoquartier Lyon."
+      },
+      "proj2": {
+        title: "Parc urbain Nantes",
+        content: "Zone modifiable : Ajoutez ici vos documents, textes ou images sur le parc urbain Nantes."
+      }
+    };
+    function openModal(proj) {
+      document.getElementById('modal-title').textContent = projects[proj].title;
+      document.getElementById('modal-content').innerHTML = projects[proj].content;
+      document.getElementById('modal-bg').style.display = "flex";
+    }
+    function closeModal() {
+      document.getElementById('modal-bg').style.display = "none";
+    }
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "Escape") closeModal();
+    });
+    document.getElementById('modal-bg').onclick = function(e) {
+      if (e.target === this) closeModal();
+    };
+  </script>
 </body>
 </html>
