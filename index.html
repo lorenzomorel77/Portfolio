@@ -35,14 +35,13 @@
         }
         header p {
             font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            font-weight: 300;
+            opacity: 0.95;
             position: relative;
             z-index: 1;
         }
         nav {
-            background: #1a4620;
-            padding: 1rem 0;
+            background: #215c2e;
+            padding: 1rem;
             text-align: center;
             position: sticky;
             top: 0;
@@ -51,119 +50,158 @@
         }
         nav a {
             color: white;
-            margin: 0 1.5rem;
             text-decoration: none;
+            margin: 0 1.5rem;
             font-weight: 500;
-            transition: color 0.3s ease;
             cursor: pointer;
+            transition: opacity 0.3s;
         }
         nav a:hover {
-            color: #a8d5ba;
+            opacity: 0.8;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
         }
         section {
-            padding: 3rem 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-            scroll-margin-top: 80px;
+            margin: 3rem 0;
         }
         section h2 {
             font-size: 2.5rem;
             margin-bottom: 2rem;
             color: #215c2e;
-            display: inline-block;
-            position: relative;
+            border-bottom: 3px solid #215c2e;
+            padding-bottom: 1rem;
         }
-        .edit-btn {
-            background: #215c2e;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            margin-left: 1rem;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            transition: background 0.3s ease;
-        }
-        .edit-btn:hover {
-            background: #1a4620;
-        }
-        .edit-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-        textarea.edit-field {
-            width: 100%;
-            min-height: 100px;
-            padding: 1rem;
-            border: 2px solid #215c2e;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 1rem;
-            resize: vertical;
-        }
-        .edit-actions {
-            margin: 1rem 0;
-        }
-        .edit-actions button {
-            background: #215c2e;
-            color: white;
-            border: none;
-            padding: 0.7rem 1.5rem;
-            margin-right: 0.5rem;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 1rem;
-            transition: background 0.3s ease;
-        }
-        .edit-actions button:hover {
-            background: #1a4620;
-        }
-        .edit-actions button.cancel {
-            background: #999;
-        }
-        .edit-actions button.cancel:hover {
-            background: #777;
-        }
-        .content {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #2d3436;
-        }
-        .content p {
-            margin-bottom: 1rem;
-        }
-        .links {
-            margin: 2rem 0;
-            display: flex;
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            flex-wrap: wrap;
-        }
-        .links a {
-            background: #215c2e;
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: background 0.3s ease;
-            display: inline-block;
-        }
-        .links a:hover {
-            background: #1a4620;
+            margin-bottom: 2rem;
         }
         .project-card {
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #1a4620 0%, #215c2e 100%);
+            border-radius: 12px;
             padding: 2rem;
-            margin-bottom: 2rem;
-            border-left: 4px solid #215c2e;
-            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #0d2510;
+            box-shadow: 0 4px 15px rgba(33, 92, 46, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 250px;
+            justify-content: space-between;
         }
-        .project-card h3 {
-            color: #215c2e;
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(33, 92, 46, 0.4);
+            background: linear-gradient(135deg, #215c2e 0%, #2d7a3f 100%);
+        }
+        .project-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
             margin-bottom: 1rem;
         }
+        .project-summary {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .modal.show {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: slideIn 0.3s;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #215c2e;
+            padding-bottom: 1rem;
+        }
+        .modal-header h2 {
+            color: #215c2e;
+            margin: 0;
+        }
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #215c2e;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+        .close-btn:hover {
+            transform: scale(1.2);
+        }
+        .modal-body {
+            min-height: 300px;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 2px dashed #215c2e;
+            color: #666;
+        }
+        .modal-body p {
+            color: #999;
+            font-style: italic;
+            text-align: center;
+        }
         footer {
-            background: #2d3436;
+            background: #215c2e;
             color: white;
             text-align: center;
             padding: 2rem;
@@ -174,138 +212,121 @@
 <body>
     <header>
         <h1>Lorenzo Morel</h1>
-        <p>Urbaniste | Développeur Durable | Innovateur Territorial</p>
+        <p>Développeur Créatif | Portfolio Interactif</p>
     </header>
 
     <nav>
-        <a href="#a-propos">À propos</a>
-        <a href="#projets">Projets</a>
+        <a href="#about">À propos</a>
+        <a href="#projects">Projets</a>
         <a href="#contact">Contact</a>
     </nav>
 
-    <section id="a-propos">
-        <div class="edit-container">
-            <h2>À Propos</h2>
-            <button class="edit-btn" onclick="startEditing('about')">Modifier</button>
-        </div>
-        <div class="content" id="about-content">
-            <p>Je suis un urbaniste passionné par la création de villes durables et innovantes. Avec une expertise en planification urbaine et développement numérique, je travaille à l'intersection de l'urbanisme traditionnel et des solutions technologiques modernes.</p>
-            <p>Mon approche combine rigueur analytique et créativité pour développer des solutions territoriales qui répondent aux défis contemporains du développement urbain durable.</p>
-        </div>
-        <div id="about-edit" style="display:none;">
-            <textarea class="edit-field" id="about-textarea"></textarea>
-            <div class="edit-actions">
-                <button onclick="saveEdit('about')">Enregistrer</button>
-                <button class="cancel" onclick="cancelEdit('about')">Annuler</button>
-            </div>
-        </div>
-    </section>
+    <main>
+        <section id="about">
+            <h2>À propos</h2>
+            <p>Bienvenue sur mon portfolio ! Je suis un développeur passionné par la création de solutions innovantes et élégantes.</p>
+        </section>
 
-    <section id="projets">
-        <div class="edit-container">
-            <h2>Projets</h2>
-            <button class="edit-btn" onclick="startEditing('projects')">Modifier</button>
-        </div>
-        <div class="content" id="projects-content">
-            <div class="project-card">
-                <h3>💡 Innovation et Smart City</h3>
-                <p>Intégration de solutions numériques au service de l'aménagement urbain : capteurs environnementaux, éclairage intelligent, systèmes de gestion optimisée des ressources et participation citoyenne digitale.</p>
+        <section id="projects">
+            <h2>Mes Projets</h2>
+            <div class="projects-grid">
+                <div class="project-card" onclick="openModal('project1')">
+                    <span class="project-icon">💻</span>
+                    <h3 class="project-title">Projet 1</h3>
+                    <p class="project-summary">Description courte de votre premier projet</p>
+                </div>
+                <div class="project-card" onclick="openModal('project2')">
+                    <span class="project-icon">🎨</span>
+                    <h3 class="project-title">Projet 2</h3>
+                    <p class="project-summary">Description courte de votre deuxième projet</p>
+                </div>
+                <div class="project-card" onclick="openModal('project3')">
+                    <span class="project-icon">🚀</span>
+                    <h3 class="project-title">Projet 3</h3>
+                    <p class="project-summary">Description courte de votre troisième projet</p>
+                </div>
             </div>
-            <div class="project-card">
-                <h3>🏙️ Réhabilitation d'Espaces Publics</h3>
-                <p>Projet de transformation d'espaces publics dégradés en lieux de vie conviviaux et durables. Approche participative avec les habitants pour co-créer des aménagements adaptés aux besoins locaux.</p>
-            </div>
-            <div class="project-card">
-                <h3>♻️ Économie Circulaire Territoriale</h3>
-                <p>Recherche sur l'intégration de l'économie circulaire dans la planification urbaine : circuits courts, réemploi de matériaux, compostage collectif et gestion locale des déchets.</p>
-            </div>
-            <div class="project-card">
-                <h3>🌍 Adaptation Climatique</h3>
-                <p>Élaboration de stratégies d'adaptation au changement climatique à l'échelle territoriale : désimperméabilisation des sols, création de corridors verts et plans canicule urbains.</p>
-            </div>
-        </div>
-        <div id="projects-edit" style="display:none;">
-            <textarea class="edit-field" id="projects-textarea"></textarea>
-            <div class="edit-actions">
-                <button onclick="saveEdit('projects')">Enregistrer</button>
-                <button class="cancel" onclick="cancelEdit('projects')">Annuler</button>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact">
-        <div class="edit-container">
+        <section id="contact">
             <h2>Contact</h2>
-            <button class="edit-btn" onclick="startEditing('contact')">Modifier</button>
-        </div>
-        <div class="content" id="contact-content">
-            <p>N'hésitez pas à me contacter pour discuter de projets d'urbanisme durable, de collaboration ou simplement pour échanger des idées sur l'avenir des villes.</p>
-            <div class="links">
-                <a href="https://linkedin.com/in/lorenzomorel" target="_blank">LinkedIn</a>
-                <a href="mailto:contact@lorenzomorel.fr">Email</a>
+            <p>Contactez-moi pour discuter de vos projets ou collaborations.</p>
+        </section>
+    </main>
+
+    <div id="project1" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Projet 1</h2>
+                <button class="close-btn" onclick="closeModal('project1')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Zone de contenu modifiable - Vous pouvez ajouter vos cartes, photos, texte et autres éléments ici. Copiez-collez vos contenus pour les ajouter ultérieurement.</p>
             </div>
         </div>
-        <div id="contact-edit" style="display:none;">
-            <textarea class="edit-field" id="contact-textarea"></textarea>
-            <div class="edit-actions">
-                <button onclick="saveEdit('contact')">Enregistrer</button>
-                <button class="cancel" onclick="cancelEdit('contact')">Annuler</button>
+    </div>
+
+    <div id="project2" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Projet 2</h2>
+                <button class="close-btn" onclick="closeModal('project2')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Zone de contenu modifiable - Vous pouvez ajouter vos cartes, photos, texte et autres éléments ici. Copiez-collez vos contenus pour les ajouter ultérieurement.</p>
             </div>
         </div>
-    </section>
+    </div>
+
+    <div id="project3" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Projet 3</h2>
+                <button class="close-btn" onclick="closeModal('project3')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Zone de contenu modifiable - Vous pouvez ajouter vos cartes, photos, texte et autres éléments ici. Copiez-collez vos contenus pour les ajouter ultérieurement.</p>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2024 Lorenzo Morel. Tous droits réservés.</p>
     </footer>
 
     <script>
-        function startEditing(section) {
-            const contentDiv = document.getElementById(section + '-content');
-            const editDiv = document.getElementById(section + '-edit');
-            const textarea = document.getElementById(section + '-textarea');
-            
-            if (contentDiv && editDiv) {
-                textarea.value = contentDiv.innerHTML;
-                contentDiv.style.display = 'none';
-                editDiv.style.display = 'block';
+        function openModal(projectId) {
+            const modal = document.getElementById(projectId);
+            if (modal) {
+                modal.classList.add('show');
             }
         }
 
-        function saveEdit(section) {
-            const contentDiv = document.getElementById(section + '-content');
-            const editDiv = document.getElementById(section + '-edit');
-            const textarea = document.getElementById(section + '-textarea');
-            
-            if (contentDiv && editDiv && textarea) {
-                contentDiv.innerHTML = textarea.value;
-                contentDiv.style.display = 'block';
-                editDiv.style.display = 'none';
-                localStorage.setItem(section + '-content', textarea.value);
+        function closeModal(projectId) {
+            const modal = document.getElementById(projectId);
+            if (modal) {
+                modal.classList.remove('show');
             }
         }
 
-        function cancelEdit(section) {
-            const contentDiv = document.getElementById(section + '-content');
-            const editDiv = document.getElementById(section + '-edit');
-            
-            if (contentDiv && editDiv) {
-                contentDiv.style.display = 'block';
-                editDiv.style.display = 'none';
+        // Close modal when clicking outside the modal-content
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                const modal = event.target;
+                modal.classList.remove('show');
             }
-        }
-
-        window.addEventListener('load', function() {
-            ['about', 'projects', 'contact'].forEach(section => {
-                const saved = localStorage.getItem(section + '-content');
-                if (saved) {
-                    const contentDiv = document.getElementById(section + '-content');
-                    if (contentDiv) {
-                        contentDiv.innerHTML = saved;
-                    }
-                }
-            });
         });
 
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal.show').forEach(modal => {
+                    modal.classList.remove('show');
+                });
+            }
+        });
+
+        // Smooth scroll for navigation
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
