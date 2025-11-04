@@ -2,29 +2,55 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Lorenzo Morel</title>
+  <title>Portfolio Lorenzo Morel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body { background: #fff; font-family: Arial, sans-serif; color:#222; margin:0; }
     header { background: #215c2e; color: white; padding: 30px 10px 16px 10px; text-align: center; }
     main { max-width: 900px; margin: 22px auto 0 auto; padding: 0 9px; }
     h1 { margin:0 0 10px 0; font-weight:700; }
-    h2 { text-align: center; color: #215c2e; font-size: 28px; margin-bottom: 24px; }
     nav { margin-top:12px;}
     nav a { color:#215c2e; text-decoration:none; margin:0 18px; font-weight:bold;}
     section { margin-bottom: 42px; }
-    .project-grid { display: flex; flex-wrap: wrap; gap: 18px; }
+    /* Centrer et embellir À propos */
+    #about-text {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.07em;
+      line-height: 1.7;
+      background: #f8f9fa;
+      border-radius: 8px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+      padding: 24px;
+    }
+    .project-grid { display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; }
     .project-card { background: #fff; border: 2px solid #215c2e; border-radius:8px; box-shadow:0 2px 8px #eee; padding:20px 18px; flex:1 1 290px; cursor:pointer; transition:box-shadow 0.2s;}
     .project-card:hover{box-shadow:0 6px 16px #ccc;}
     .project-title { font-weight: bold; color:#215c2e; margin-bottom:8px; }
     .project-desc { margin-bottom:12px; }
     .tag { display:inline-block; color:#fff;font-size:13px;font-weight:bold; background:#215c2e; border-radius:6px; padding:3px 9px; margin-right:6px;}
-    footer { text-align: center; font-size:15px; color: #666; margin:38px 0 20px; padding: 20px 0; }
-    #contact { text-align: center; background: #f9f9f9; padding: 50px 20px; border-radius: 12px; margin: 60px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-    .contact-btns { margin-top: 28px; }
-    .contact-btns a { display:inline-block; padding:12px 32px; margin:0 12px; color:#fff; background:#215c2e; border-radius:8px; text-decoration:none; font-weight:bold; transition: all 0.3s; box-shadow: 0 3px 8px rgba(33,92,46,0.3);}
-    .contact-btns a:hover { background:#2d7a3e; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(33,92,46,0.4); }
-    @media(max-width:650px){.project-grid{flex-direction:column;} .contact-btns a { display:block; margin: 10px auto; max-width: 200px; }}
+    /* Contact centré */
+    #contact-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .contact-btns {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin: 18px 0 16px 0;
+    }
+    .contact-btns a { display:inline-block; padding:10px 26px; color:#fff; background:#215c2e; border-radius:8px; text-decoration:none; font-weight:bold; font-size:1.05em; transition:background .2s;}
+    .contact-btns a:hover { background: #288141;}
+    footer { text-align: center; font-size:15px; color: #666; margin:38px 0 0; }
+    @media(max-width:650px){
+      .project-grid{flex-direction:column;}
+      #about-text{padding:13px;}
+      .contact-btns a{padding:10px 15px;}
+    }
+    /* Modal */
     .modal-bg{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(33,92,46,0.19);display:none;align-items:center;justify-content:center;z-index:100;}
     .modal{background:#fff;border:2px solid #215c2e;padding:28px 24px;border-radius:12px;min-width:300px;max-width:94vw;max-height:76vh;overflow-y:auto;}
     .modal-title{font-weight:bold;font-size:21px;color:#215c2e;}
@@ -34,7 +60,7 @@
 </head>
 <body>
   <header>
-    <h1>Lorenzo Morel</h1>
+    <h1>Portfolio Lorenzo Morel</h1>
     <nav>
       <a href="#about">À propos</a>
       <a href="#projects">Projets</a>
@@ -44,12 +70,12 @@
   <main>
     <section id="about">
       <h2>À propos</h2>
-      <div>
-        Urbaniste passionné par la fabrique de villes résilientes et inclusives, j'ai réalisé des travaux d'études dans le cadre de mon master à Montpellier, principalement orientés vers des diagnostics territoriaux et la création de pièces graphiques à différentes échelles sur le grand territoire montpelliérain.<br><br>
-        Diplômé en géographie et actuellement étudiant en Master « Projet et aménagement » à l'Université Paul Valéry Montpellier 3, j'ai développé une expertise dans l'analyse des dynamiques spatiales, la gestion des ressources naturelles et la mobilité douce, tout en cherchant à promouvoir la biodiversité urbaine.<br><br>
-        Mon approche associe rigueur méthodologique, design urbain durable et implication des usagers afin d'imaginer des espaces vivants et fonctionnels.<br><br>
-        Mes travaux vont du diagnostic territorial à la réalisation de documents cartographiques et graphiques, toujours dans une perspective de transformation positive et collaborative du territoire.<br><br>
-        Je mets l'accent sur l'écoute, la créativité et le pragmatisme, avec pour objectif l'impact concret et l'intelligence collective à chaque étape du projet.
+      <div id="about-text">
+        Urbaniste passionné par la fabrique de villes résilientes et inclusives, j’ai réalisé des travaux d’études dans le cadre de mon master à Montpellier, principalement orientés vers des diagnostics territoriaux et la création de pièces graphiques à différentes échelles sur le grand territoire montpelliérain.<br><br>
+        Diplômé en géographie et actuellement étudiant en Master « Projet et aménagement » à l’Université Paul Valéry Montpellier 3, j’ai développé une expertise dans l’analyse des dynamiques spatiales, la gestion des ressources naturelles et la mobilité douce, tout en cherchant à promouvoir la biodiversité urbaine.<br><br>
+        Mon approche associe rigueur méthodologique, design urbain durable et implication des usagers afin d’imaginer des espaces vivants et fonctionnels.<br>
+        Mes travaux vont du diagnostic territorial à la réalisation de documents cartographiques et graphiques, toujours dans une perspective de transformation positive et collaborative du territoire.<br>
+        Je mets l’accent sur l’écoute, la créativité et le pragmatisme, avec pour objectif l’impact concret et l’intelligence collective à chaque étape du projet.
       </div>
     </section>
     <section id="projects">
@@ -62,14 +88,13 @@
         </div>
         <div class="project-card" onclick="openModal('proj2')">
           <div class="project-title">Parc urbain Nantes</div>
-          <div class="project-desc">Transformation d'une friche ferroviaire en parc urbain inclusif et biodiversifié.</div>
+          <div class="project-desc">Transformation d’une friche ferroviaire en parc urbain inclusif et biodiversifié.</div>
           <span class="tag">Biodiversité</span><span class="tag">Design durable</span>
         </div>
       </div>
     </section>
-    <section id="contact">
+    <section id="contact-section">
       <h2>Contact</h2>
-      <p style="color: #666; font-size: 17px; margin-bottom: 20px;">N'hésitez pas à me contacter pour discuter de vos projets urbains</p>
       <div class="contact-btns">
         <a href="https://www.linkedin.com/in/lorenzo-morel-566aa4233/" target="_blank">LinkedIn</a>
         <a href="mailto:lorenzomorel77@gmail.com">Email</a>
@@ -77,12 +102,12 @@
     </section>
   </main>
   <footer>
-    © 2025 Lorenzo Morel • Portfolio urbain
+    &copy; 2025 Lorenzo Morel • Portfolio urbain
   </footer>
   <!-- Modal structure -->
   <div class="modal-bg" id="modal-bg">
     <div class="modal">
-      <span class="modal-close" onclick="closeModal()">×</span>
+      <span class="modal-close" onclick="closeModal()">&times;</span>
       <div class="modal-title" id="modal-title"></div>
       <div class="modal-content" id="modal-content"></div>
     </div>
