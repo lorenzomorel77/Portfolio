@@ -12,7 +12,14 @@
     nav { margin-top:12px;}
     nav a { color:#215c2e; text-decoration:none; margin:0 18px; font-weight:bold;}
     section { margin-bottom: 42px; }
-    /* Centrer et embellir À propos */
+    section h2 {
+      color: #215c2e;
+      font-size: 2rem;
+      margin-bottom: 28px;
+      margin-top: 0;
+      font-weight: 700;
+      text-align: center; /* TITRES CENTRÉS */
+    }
     #about-text {
       text-align: center;
       max-width: 700px;
@@ -30,18 +37,8 @@
     .project-title { font-weight: bold; color:#215c2e; margin-bottom:8px; }
     .project-desc { margin-bottom:12px; }
     .tag { display:inline-block; color:#fff;font-size:13px;font-weight:bold; background:#215c2e; border-radius:6px; padding:3px 9px; margin-right:6px;}
-    /* Contact centré */
-    #contact-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .contact-btns {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      margin: 18px 0 16px 0;
-    }
+    #contact-section { display: flex; flex-direction: column; align-items: center; }
+    .contact-btns { display: flex; gap: 20px; justify-content: center; margin: 18px 0 16px 0;}
     .contact-btns a { display:inline-block; padding:10px 26px; color:#fff; background:#215c2e; border-radius:8px; text-decoration:none; font-weight:bold; font-size:1.05em; transition:background .2s;}
     .contact-btns a:hover { background: #288141;}
     footer { text-align: center; font-size:15px; color: #666; margin:38px 0 0; }
@@ -52,91 +49,4 @@
     }
     /* Modal */
     .modal-bg{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(33,92,46,0.19);display:none;align-items:center;justify-content:center;z-index:100;}
-    .modal{background:#fff;border:2px solid #215c2e;padding:28px 24px;border-radius:12px;min-width:300px;max-width:94vw;max-height:76vh;overflow-y:auto;}
-    .modal-title{font-weight:bold;font-size:21px;color:#215c2e;}
-    .modal-close{position:absolute;top:20px;right:32px;font-size:33px;cursor:pointer;color:#215c2e;}
-    .modal-content{margin-top:16px;}
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Portfolio Lorenzo Morel</h1>
-    <nav>
-      <a href="#about">À propos</a>
-      <a href="#projects">Projets</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-  <main>
-    <section id="about">
-      <h2>À propos</h2>
-      <div id="about-text">
-        Urbaniste passionné par la fabrique de villes résilientes et inclusives, j’ai réalisé des travaux d’études dans le cadre de mon master à Montpellier, principalement orientés vers des diagnostics territoriaux et la création de pièces graphiques à différentes échelles sur le grand territoire montpelliérain.<br><br>
-        Diplômé en géographie et actuellement étudiant en Master « Projet et aménagement » à l’Université Paul Valéry Montpellier 3, j’ai développé une expertise dans l’analyse des dynamiques spatiales, la gestion des ressources naturelles et la mobilité douce, tout en cherchant à promouvoir la biodiversité urbaine.<br><br>
-        Mon approche associe rigueur méthodologique, design urbain durable et implication des usagers afin d’imaginer des espaces vivants et fonctionnels.<br>
-        Mes travaux vont du diagnostic territorial à la réalisation de documents cartographiques et graphiques, toujours dans une perspective de transformation positive et collaborative du territoire.<br>
-        Je mets l’accent sur l’écoute, la créativité et le pragmatisme, avec pour objectif l’impact concret et l’intelligence collective à chaque étape du projet.
-      </div>
-    </section>
-    <section id="projects">
-      <h2>Projets urbains</h2>
-      <div class="project-grid">
-        <div class="project-card" onclick="openModal('proj1')">
-          <div class="project-title">Ecoquartier Lyon</div>
-          <div class="project-desc">Conception d'espaces verts et renaturation, participation citoyenne, mobilité douce.</div>
-          <span class="tag">Renaturation</span><span class="tag">Mobilité douce</span><span class="tag">Concertation</span>
-        </div>
-        <div class="project-card" onclick="openModal('proj2')">
-          <div class="project-title">Parc urbain Nantes</div>
-          <div class="project-desc">Transformation d’une friche ferroviaire en parc urbain inclusif et biodiversifié.</div>
-          <span class="tag">Biodiversité</span><span class="tag">Design durable</span>
-        </div>
-      </div>
-    </section>
-    <section id="contact-section">
-      <h2>Contact</h2>
-      <div class="contact-btns">
-        <a href="https://www.linkedin.com/in/lorenzo-morel-566aa4233/" target="_blank">LinkedIn</a>
-        <a href="mailto:lorenzomorel77@gmail.com">Email</a>
-      </div>
-    </section>
-  </main>
-  <footer>
-    &copy; 2025 Lorenzo Morel • Portfolio urbain
-  </footer>
-  <!-- Modal structure -->
-  <div class="modal-bg" id="modal-bg">
-    <div class="modal">
-      <span class="modal-close" onclick="closeModal()">&times;</span>
-      <div class="modal-title" id="modal-title"></div>
-      <div class="modal-content" id="modal-content"></div>
-    </div>
-  </div>
-  <script>
-    const projects = {
-      "proj1": {
-        title: "Ecoquartier Lyon",
-        content: "Zone modifiable : Ajoutez ici des visuels, cartes, textes sur le projet Ecoquartier Lyon."
-      },
-      "proj2": {
-        title: "Parc urbain Nantes",
-        content: "Zone modifiable : Ajoutez ici vos documents, textes ou images sur le parc urbain Nantes."
-      }
-    };
-    function openModal(proj) {
-      document.getElementById('modal-title').textContent = projects[proj].title;
-      document.getElementById('modal-content').innerHTML = projects[proj].content;
-      document.getElementById('modal-bg').style.display = "flex";
-    }
-    function closeModal() {
-      document.getElementById('modal-bg').style.display = "none";
-    }
-    window.addEventListener('keydown', function(e) {
-      if (e.key === "Escape") closeModal();
-    });
-    document.getElementById('modal-bg').onclick = function(e) {
-      if (e.target === this) closeModal();
-    };
-  </script>
-</body>
-</html>
+    .modal{background:#fff;border:2px solid #215
