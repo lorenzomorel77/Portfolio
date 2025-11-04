@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-
 <html lang="fr">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lorenzo Morel - Portfolio</title>
@@ -23,24 +22,15 @@
         position: relative;
         overflow: hidden;
       }
-      header::before {
-        content: "";
-        display: none;
-      }
       header h1 {
         font-size: 3.5rem;
         margin-bottom: 0.5rem;
         font-weight: 700;
-        text-shadow: none;
-        position: relative;
-        z-index: 1;
         color: #215c2e;
       }
       header p {
         font-size: 1.5rem;
         margin-bottom: 1.3rem;
-        position: relative;
-        z-index: 1;
         color: #215c2e;
       }
       main {
@@ -224,24 +214,79 @@
         color: #fff;
       }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <header>
-      <h1>Lorenzo Morel</h1>
-      <p>Urbaniste durable &amp; Concepteur d'espaces urbains</p>
+        <h1>Lorenzo Morel</h1>
+        <p>Urbaniste durable & Concepteur d'espaces urbains</p>
     </header>
-    <section style="background:#fff; padding:2.3rem 2rem 2.3rem 2rem; border-radius: 18px; max-width: 850px; margin: 2rem auto 3.2rem auto; box-shadow: 0 2px 10px rgba(33,92,46,0.08); border: 1.5px solid #215c2e;">
-      <h2>À propos</h2>
-      <p style="font-size:1.1em; color:#215c2e;">
-        Urbaniste passionné par la fabrique de villes résilientes, inclusives et vivantes, j'accompagne collectivités et acteurs locaux dans la transition écologique des territoires.<br>
-        <br>
-        Parcours : diplômé en urbanisme à l'Université de Lyon III, j'ai consolidé mon expérience sur des projets d'écoquartiers, de renaturation urbaine et de concertation citoyenne, en France comme à l'international.<br>
-        <br>
-        Vision &amp; domaine : mon approche allie design urbain durable, gestion des ressources naturelles et participation active des usagers. J'aime concevoir des espaces qui encouragent la biodiversité, la mobilité douce et le vivre-ensemble.<br>
-        <br>
-        Mes valeurs : écoute, créativité, pragmatisme, et recherche d'impact positif à chaque étape du projet. J'interviens sur des missions allant du plan-guide à l'animation de démarches collaboratives et à la conception d'espaces publics.<br>
-      </p>
-    </section>
-    <!-- ... rest of your HTML file ... -->
-  </body>
+    <main>
+        <!-- Section À propos -->
+        <section style="background:#fff; padding:2.3rem 2rem 2.3rem 2rem; border-radius: 18px; max-width: 850px; margin: 2rem auto 3.2rem auto; box-shadow: 0 2px 10px rgba(33,92,46,0.08); border: 1.5px solid #215c2e;">
+            <h2>À propos</h2>
+            <p style="font-size:1.1em; color:#215c2e;">
+                Urbaniste passionné par la fabrique de villes résilientes, inclusives et vivantes, j'accompagne collectivités et acteurs locaux dans la transition écologique des territoires.<br><br>
+                Parcours : diplômé en urbanisme à l'Université de Lyon III, j'ai consolidé mon expérience sur des projets d'écoquartiers, de renaturation urbaine et de concertation citoyenne, en France comme à l'international.<br><br>
+                Vision & domaine : mon approche allie design urbain durable, gestion des ressources naturelles et participation active des usagers. J'aime concevoir des espaces qui encouragent la biodiversité, la mobilité douce et le vivre-ensemble.<br><br>
+                Mes valeurs : écoute, créativité, pragmatisme, et recherche d'impact positif à chaque étape du projet. J'interviens sur des missions allant du plan-guide à l'animation de démarches collaboratives et à la conception d'espaces publics.
+            </p>
+        </section>
+
+        <!-- Section Projets urbains -->
+        <section class="projects">
+            <h2>Projets urbains</h2>
+            <div class="projects-grid">
+                <!-- Carte 1 -->
+                <div class="project-card" onclick="showModal('ecoquartier')">
+                    <div class="project-title">Ecoquartier Lyon</div>
+                    <div class="project-description">Conception d'espaces verts et renaturation, participation citoyenne, mobilité douce.</div>
+                    <div class="project-tags"><span class="tag">Renaturation</span><span class="tag">Mobilité douce</span><span class="tag">Concertation</span></div>
+                    <div class="card-action"><button onclick="showModal('ecoquartier')">Voir +</button></div>
+                </div>
+                <!-- Carte 2 -->
+                <div class="project-card" onclick="showModal('parcUrban')">
+                    <div class="project-title">Parc urbain Nantes</div>
+                    <div class="project-description">Transformation d’une friche ferroviaire en parc urbain inclusif et biodiversifié.</div>
+                    <div class="project-tags"><span class="tag">Biodiversité</span><span class="tag">Design durable</span></div>
+                    <div class="card-action"><button onclick="showModal('parcUrban')">Voir +</button></div>
+                </div>
+            </div>
+            <!-- Modals (Pop-ups) -->
+            <div class="modal-bg" id="modal-bg">
+                <div class="modal" id="modal-content">
+                    <button class="close-btn" onclick="closeModal()">&times;</button>
+                    <div id="modal-text"></div>
+                </div>
+            </div>
+            <script>
+                function showModal(project) {
+                  var modalBg = document.getElementById('modal-bg');
+                  var modalText = document.getElementById('modal-text');
+                  modalBg.classList.add('active');
+                  if(project === 'ecoquartier') {
+                    modalText.innerHTML = '<h3>Ecoquartier Lyon</h3>'+
+                      '<div class="modal-content-large">Développement d’un quartier durable au cœur de Lyon : intégration de la nature en ville, gestion des eaux, ateliers citoyens, espaces publics pour tous.</div>';
+                  }
+                  if(project === 'parcUrban') {
+                    modalText.innerHTML = '<h3>Parc urbain Nantes</h3>'+
+                      '<div class="modal-content-large">Création d’un parc ouvert et accessible, zones naturelles préservées, parcours pédagogiques, participation des habitants au design et à l’animation.</div>';
+                  }
+                }
+                function closeModal() {
+                  var modalBg = document.getElementById('modal-bg');
+                  modalBg.classList.remove('active');
+                }
+            </script>
+        </section>
+
+        <!-- Section Contact -->
+        <section class="contact-section">
+            <h2>Contact</h2>
+            <div class="contact-links">
+                <a class="contact-link" href="https://www.linkedin.com/in/lorenzomorel77" target="_blank">LinkedIn</a>
+                <a class="contact-link" href="mailto:lorenzomorel77@gmail.com">Email</a>
+            </div>
+        </section>
+    </main>
+</body>
 </html>
