@@ -82,11 +82,13 @@
         font-size: 1.28rem;
         margin-bottom: 0.5rem;
         font-weight: 600;
+        cursor: pointer;
       }
       .project-description {
         color: #2e5540;
         font-size: 1.08rem;
         margin-bottom: 1.3rem;
+        cursor: pointer;
       }
       .project-tags {
         margin-bottom: 0.5rem;
@@ -119,6 +121,41 @@
       .card-action button:hover {
         background: #215c2e;
         color: #fff;
+      }
+      .edit-btn {
+        font-size: 0.95em;
+        background: #215c2e;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 5px 15px;
+        margin-left: 12px;
+        cursor: pointer;
+        transition: background 0.12s, color 0.12s;
+      }
+      .edit-btn:hover {
+        background: #2d8646;
+      }
+      .save-btn {
+        font-size: 0.95em;
+        background: #fff;
+        color: #215c2e;
+        border: 1.5px solid #215c2e;
+        border-radius: 8px;
+        padding: 5px 15px;
+        margin-left: 12px;
+        cursor: pointer;
+        transition: background 0.11s, color 0.11s;
+      }
+      .save-btn:hover {
+        background: #215c2e;
+        color: #fff;
+      }
+      .content-editable {
+        outline: 2px solid #8ecec0;
+        background: #f8fcfa;
+        border-radius: 6px;
+        min-height: 2.2em;
       }
       .modal-bg {
         display: none;
@@ -213,80 +250,102 @@
         background: #215c2e;
         color: #fff;
       }
+      @media (max-width: 600px) {
+        header {
+          padding: 3rem 0.8rem 1.2rem 0.8rem;
+        }
+        main {
+          padding: 0 0.2rem;
+        }
+        .projects-grid {
+          gap: 1.4rem;
+        }
+        .project-card {
+          padding: 1.2rem 0.8rem 1rem 0.8rem;
+        }
+        .modal {
+          padding: 1.1rem 0.5rem;
+        }
+        .contact-section {
+          padding: 1.3rem 0 1.3rem 0;
+        }
+      }
     </style>
 </head>
 <body>
     <header>
-        <h1>Lorenzo Morel</h1>
-        <p>Urbaniste durable & Concepteur d'espaces urbains</p>
+        <h1 id="header-title">Lorenzo Morel</h1>
+        <p id="header-desc">Urbaniste durable &amp; Concepteur d'espaces urbains</p>
     </header>
     <main>
         <!-- Section À propos -->
         <section style="background:#fff; padding:2.3rem 2rem 2.3rem 2rem; border-radius: 18px; max-width: 850px; margin: 2rem auto 3.2rem auto; box-shadow: 0 2px 10px rgba(33,92,46,0.08); border: 1.5px solid #215c2e;">
-            <h2>À propos</h2>
-            <p style="font-size:1.1em; color:#215c2e;">
+            <h2 style="display: inline;">À propos</h2> <button class="edit-btn" onclick="toggleEdit('about')">Modifier</button>
+            <p id="about-text" style="font-size:1.1em; color:#215c2e;" contenteditable="false">
                 Urbaniste passionné par la fabrique de villes résilientes, inclusives et vivantes, j'accompagne collectivités et acteurs locaux dans la transition écologique des territoires.<br><br>
                 Parcours : diplômé en urbanisme à l'Université de Lyon III, j'ai consolidé mon expérience sur des projets d'écoquartiers, de renaturation urbaine et de concertation citoyenne, en France comme à l'international.<br><br>
-                Vision & domaine : mon approche allie design urbain durable, gestion des ressources naturelles et participation active des usagers. J'aime concevoir des espaces qui encouragent la biodiversité, la mobilité douce et le vivre-ensemble.<br><br>
+                Vision &amp; domaine : mon approche allie design urbain durable, gestion des ressources naturelles et participation active des usagers. J'aime concevoir des espaces qui encouragent la biodiversité, la mobilité douce et le vivre-ensemble.<br><br>
                 Mes valeurs : écoute, créativité, pragmatisme, et recherche d'impact positif à chaque étape du projet. J'interviens sur des missions allant du plan-guide à l'animation de démarches collaboratives et à la conception d'espaces publics.
             </p>
+            <button id="save-about" class="save-btn" style="display:none;" onclick="saveEdit('about')">Enregistrer</button>
         </section>
-
         <!-- Section Projets urbains -->
         <section class="projects">
-            <h2>Projets urbains</h2>
+            <h2 style="display: inline;">Projets urbains</h2>
             <div class="projects-grid">
                 <!-- Carte 1 -->
-                <div class="project-card" onclick="showModal('ecoquartier')">
-                    <div class="project-title">Ecoquartier Lyon</div>
-                    <div class="project-description">Conception d'espaces verts et renaturation, participation citoyenne, mobilité douce.</div>
-                    <div class="project-tags"><span class="tag">Renaturation</span><span class="tag">Mobilité douce</span><span class="tag">Concertation</span></div>
+                <div class="project-card">
+                    <div class="project-title" id="proj1-title" contenteditable="false">Ecoquartier Lyon</div>
+                    <button class="edit-btn" style="position:absolute;top:10px;right:10px;z-index:2;" onclick="toggleEdit('proj1')">Modifier</button>
+                    <div class="project-description" id="proj1-desc" contenteditable="false">Conception d'espaces verts et renaturation, participation citoyenne, mobilité douce.</div>
+                    <div class="project-tags" id="proj1-tags"><span class="tag">Renaturation</span><span class="tag">Mobilité douce</span><span class="tag">Concertation</span></div>
                     <div class="card-action"><button onclick="showModal('ecoquartier')">Voir +</button></div>
+                    <button id="save-proj1" class="save-btn" style="display:none;position:absolute;top:44px;right:10px;z-index:2;" onclick="saveEdit('proj1')">Enregistrer</button>
                 </div>
                 <!-- Carte 2 -->
-                <div class="project-card" onclick="showModal('parcUrban')">
-                    <div class="project-title">Parc urbain Nantes</div>
-                    <div class="project-description">Transformation d’une friche ferroviaire en parc urbain inclusif et biodiversifié.</div>
-                    <div class="project-tags"><span class="tag">Biodiversité</span><span class="tag">Design durable</span></div>
+                <div class="project-card">
+                    <div class="project-title" id="proj2-title" contenteditable="false">Parc urbain Nantes</div>
+                    <button class="edit-btn" style="position:absolute;top:10px;right:10px;z-index:2;" onclick="toggleEdit('proj2')">Modifier</button>
+                    <div class="project-description" id="proj2-desc" contenteditable="false">Transformation d’une friche ferroviaire en parc urbain inclusif et biodiversifié.</div>
+                    <div class="project-tags" id="proj2-tags"><span class="tag">Biodiversité</span><span class="tag">Design durable</span></div>
                     <div class="card-action"><button onclick="showModal('parcUrban')">Voir +</button></div>
+                    <button id="save-proj2" class="save-btn" style="display:none;position:absolute;top:44px;right:10px;z-index:2;" onclick="saveEdit('proj2')">Enregistrer</button>
                 </div>
             </div>
             <!-- Modals (Pop-ups) -->
             <div class="modal-bg" id="modal-bg">
                 <div class="modal" id="modal-content">
-                    <button class="close-btn" onclick="closeModal()">&times;</button>
+                    <button class="close-btn" onclick="closeModal()">×</button>
                     <div id="modal-text"></div>
                 </div>
             </div>
-            <script>
-                function showModal(project) {
-                  var modalBg = document.getElementById('modal-bg');
-                  var modalText = document.getElementById('modal-text');
-                  modalBg.classList.add('active');
-                  if(project === 'ecoquartier') {
-                    modalText.innerHTML = '<h3>Ecoquartier Lyon</h3>'+
-                      '<div class="modal-content-large">Développement d’un quartier durable au cœur de Lyon : intégration de la nature en ville, gestion des eaux, ateliers citoyens, espaces publics pour tous.</div>';
-                  }
-                  if(project === 'parcUrban') {
-                    modalText.innerHTML = '<h3>Parc urbain Nantes</h3>'+
-                      '<div class="modal-content-large">Création d’un parc ouvert et accessible, zones naturelles préservées, parcours pédagogiques, participation des habitants au design et à l’animation.</div>';
-                  }
-                }
-                function closeModal() {
-                  var modalBg = document.getElementById('modal-bg');
-                  modalBg.classList.remove('active');
-                }
-            </script>
         </section>
-
         <!-- Section Contact -->
         <section class="contact-section">
-            <h2>Contact</h2>
-            <div class="contact-links">
-                <a class="contact-link" href="https://www.linkedin.com/in/lorenzomorel77" target="_blank">LinkedIn</a>
-                <a class="contact-link" href="mailto:lorenzomorel77@gmail.com">Email</a>
+            <h2 style="display: inline;">Contact</h2> <button class="edit-btn" onclick="toggleEdit('contact')">Modifier</button>
+            <div class="contact-links" id="contact-links">
+                <a class="contact-link" id="contact-linkedin" href="https://www.linkedin.com/in/lorenzomorel77" target="_blank">LinkedIn</a>
+                <a class="contact-link" id="contact-mail" href="mailto:lorenzomorel77@gmail.com">Email</a>
             </div>
+            <button id="save-contact" class="save-btn" style="display:none;" onclick="saveEdit('contact')">Enregistrer</button>
         </section>
     </main>
-</body>
-</html>
+    <script>
+        // Toggle in-place editing for blocks
+        function toggleEdit(section) {
+            if (section === 'about') {
+                let p = document.getElementById('about-text');
+                let btn = document.getElementById('save-about');
+                p.contentEditable = true;
+                p.classList.add('content-editable');
+                p.focus();
+                btn.style.display = '';
+            } else if (section === 'proj1') {
+                document.getElementById('proj1-title').contentEditable = true;
+                document.getElementById('proj1-desc').contentEditable = true;
+                document.getElementById('proj1-title').classList.add('content-editable');
+                document.getElementById('proj1-desc').classList.add('content-editable');
+                document.getElementById('save-proj1').style.display = '';
+            } else if (section === 'proj2') {
+                document.getElementById('proj2-title').contentEditable = true;
+                document.getElementById('proj2
