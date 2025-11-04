@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lorenzo Morel - Portfolio</title>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lorenzo Morel - Portfolio</title>
+  <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #d7f1e6; background: #19281e; }
     header { background: linear-gradient(135deg, #215c2e 0%, #19281e 100%); color: white; text-align: center; padding: 5rem 2rem; box-shadow: 0 4px 12px rgba(33, 92, 46, 0.3); position: relative; overflow: hidden; }
@@ -32,7 +32,6 @@
     .card-action { position: absolute; right: 18px; bottom: 18px; z-index: 1; }
     .card-action button { background: #1c3820; color: #6af585; border: none; padding: 8px 16px; border-radius: 7px; font-size: 1em; cursor: pointer; transition: background 0.14s; }
     .card-action button:hover { background: #3ea855; color: #fff; }
-    /* Modal Styles */
     .modal-bg { display: none; position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(26,60,35,0.90); z-index: 9000; align-items: center; justify-content: center; }
     .modal-bg.active { display: flex; }
     .modal { background: #214d2a; border-radius: 21px; max-width: 680px; width: 93vw; padding: 3rem 2rem; color: #f2fff5; box-shadow: 0 4px 32px 0 rgba(33,92,46,0.42); position: relative; text-align: left; }
@@ -40,98 +39,148 @@
     .modal .close-btn { position: absolute; right: 25px; top: 25px; background: #193823; color: #a9f7c9; border: none; font-size: 1.52em; border-radius: 50%; width: 39px; height: 39px; cursor: pointer; transition: background 0.13s; }
     .modal .close-btn:hover { background: #2f6b43; color: #f3fff4; }
     .modal-content-large { min-height: 160px; background: #23572c; border-radius: 9px; padding: 1.3em 1em; color: #9aecbe; margin-top: 1.2em; }
-</style>
+    /* Contact section */
+    .contact-section {
+      background: #1e3b28;
+      margin-top: 4rem;
+      padding: 2.5rem 0 2.5rem 0;
+      text-align: center;
+      border-radius: 0 0 15px 15px;
+      box-shadow: 0 6px 16px rgba(33, 92, 46, 0.1);
+    }
+    .contact-section h2 {
+      color: #a4ebc7;
+      margin-bottom: 1.3rem;
+    }
+    .contact-links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .contact-link {
+      display: inline-block;
+      background: #215c2e;
+      color: #eafee7;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1.13em;
+      padding: 0.8em 1.7em;
+      transition: background 0.18s;
+    }
+    .contact-link:hover {
+      background: #39ae68;
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
 <header>
-    <h1>Lorenzo Morel</h1>
-    <p>Urbaniste durable &amp; Concepteur d'espaces urbains</p>
+  <h1>Lorenzo Morel</h1>
+  <p>Urbaniste durable &amp; Concepteur d'espaces urbains</p>
 </header>
+<section style="background:#293d2e; padding:2.3rem 2rem 2.3rem 2rem; border-radius: 18px; max-width: 850px; margin: -3.5rem auto 3.2rem auto; box-shadow: 0 2px 10px rgba(20, 50, 32, 0.10);">
+  <h2 style="color:#a4ebc7; margin-bottom:1.2rem;">À propos</h2>
+  <p style="font-size:1.1em; color:#d1f0dc;">
+    Urbaniste passionné par la fabrique de villes résilientes, inclusives et vivantes, j'accompagne collectivités et acteurs locaux dans la transition écologique des territoires. <br><br>
+    Parcours : diplômé en urbanisme à l'Université de Lyon III, j'ai consolidé mon expérience sur des projets d'écoquartiers, de renaturation urbaine et de concertation citoyenne, en France comme à l'international. <br><br>
+    Vision &amp; domaine : mon approche allie design urbain durable, gestion des ressources naturelles et participation active des usagers. J'aime concevoir des espaces qui encouragent la biodiversité, la mobilité douce et le vivre-ensemble.<br><br>
+    Mes valeurs : écoute, créativité, pragmatisme, et recherche d'impact positif à chaque étape du projet. J'interviens sur des missions allant du plan-guide à l'animation de démarches collaboratives et à la conception d'espaces publics.
+  </p>
+</section>
 <main>
-    <section class="projects">
-        <h2>Projets urbains</h2>
-        <div class="projects-grid">
-            <div class="project-card" onclick="openModal(0)">
-                <div class="project-title">EcoQuartier Rive Verte</div>
-                <div class="project-description">Conception d’un quartier durable privilégiant mobilités douces, biodiversité, gestion intelligente de l’eau, et implication citoyenne.</div>
-                <div class="project-tags">
-                    <span class="tag">Ecoquartier</span><span class="tag">Transition écologique</span><span class="tag">Participation citoyenne</span>
-                </div>
-                <div class="card-action"><button onclick="event.stopPropagation(); openModal(0);">Découvrir</button></div>
-            </div>
-            <div class="project-card" onclick="openModal(1)">
-                <div class="project-title">Parc linéaire du Renouveau</div>
-                <div class="project-description">Transformation d’une friche industrielle en parc linéaire : corridors écologiques, circulations douces, et reconversion patrimoniale.</div>
-                <div class="project-tags">
-                    <span class="tag">Renaturation</span><span class="tag">Friche</span><span class="tag">Activités urbaines mixtes</span>
-                </div>
-                <div class="card-action"><button onclick="event.stopPropagation(); openModal(1);">Découvrir</button></div>
-            </div>
-            <div class="project-card" onclick="openModal(2)">
-                <div class="project-title">Bouleversement Place Centrale</div>
-                <div class="project-description">Réaménagement de place urbaine : apaisement de la circulation, espaces de convivialité, végétalisation massive, et activation culturelle.</div>
-                <div class="project-tags">
-                    <span class="tag">Design urbain</span><span class="tag">Mobilier</span><span class="tag">Animation</span>
-                </div>
-                <div class="card-action"><button onclick="event.stopPropagation(); openModal(2);">Découvrir</button></div>
-            </div>
-            <div class="project-card" onclick="openModal(3)">
-                <div class="project-title">Résilience Quartier Lumière</div>
-                <div class="project-description">Plan-guide résilient : gestion des îlots de chaleur, trames vertes-bleues, dialogue habitants, et flexibilité programmatique.</div>
-                <div class="project-tags">
-                    <span class="tag">Résilience</span><span class="tag">Paysage</span><span class="tag">Dialogue habitants</span>
-                </div>
-                <div class="card-action"><button onclick="event.stopPropagation(); openModal(3);">Découvrir</button></div>
-            </div>
+  <section class="projects">
+    <h2>Projets urbains</h2>
+    <div class="projects-grid">
+      <!-- Cartes projets existantes restent inchangées -->
+      <div class="project-card" onclick="openModal(0)">
+        <div class="project-title">EcoQuartier Rive Verte</div>
+        <div class="project-description">Conception d’un quartier durable privilégiant mobilités douces, biodiversité, gestion intelligente de l’eau, et implication citoyenne.</div>
+        <div class="project-tags">
+            <span class="tag">Ecoquartier</span><span class="tag">Transition écologique</span><span class="tag">Participation citoyenne</span>
         </div>
-    </section>
-</main>
-<!-- Modal Infrastructure (populated dynamically)-->
-<div id="modalBackground" class="modal-bg">
-    <div class="modal" id="modalContent">
-        <button class="close-btn" onclick="closeModal()">&times;</button>
-        <h3 id="modalTitle"></h3>
-        <div id="modalDescription"></div>
-        <div class="modal-content-large" id="modalExtra"></div>
+        <div class="card-action"><button onclick="event.stopPropagation(); openModal(0);">Découvrir</button></div>
+      </div>
+      <div class="project-card" onclick="openModal(1)">
+        <div class="project-title">Parc linéaire du Renouveau</div>
+        <div class="project-description">Transformation d’une friche industrielle en parc linéaire : corridors écologiques, circulations douces, et reconversion patrimoniale.</div>
+        <div class="project-tags">
+            <span class="tag">Renaturation</span><span class="tag">Friche</span><span class="tag">Activités urbaines mixtes</span>
+        </div>
+        <div class="card-action"><button onclick="event.stopPropagation(); openModal(1);">Découvrir</button></div>
+      </div>
+      <div class="project-card" onclick="openModal(2)">
+        <div class="project-title">Bouleversement Place Centrale</div>
+        <div class="project-description">Réaménagement de place urbaine : apaisement de la circulation, espaces de convivialité, végétalisation massive, et activation culturelle.</div>
+        <div class="project-tags">
+            <span class="tag">Design urbain</span><span class="tag">Mobilier</span><span class="tag">Animation</span>
+        </div>
+        <div class="card-action"><button onclick="event.stopPropagation(); openModal(2);">Découvrir</button></div>
+      </div>
+      <div class="project-card" onclick="openModal(3)">
+        <div class="project-title">Résilience Quartier Lumière</div>
+        <div class="project-description">Plan-guide résilient : gestion des îlots de chaleur, trames vertes-bleues, dialogue habitants, et flexibilité programmatique.</div>
+        <div class="project-tags">
+            <span class="tag">Résilience</span><span class="tag">Paysage</span><span class="tag">Dialogue habitants</span>
+        </div>
+        <div class="card-action"><button onclick="event.stopPropagation(); openModal(3);">Découvrir</button></div>
+      </div>
     </div>
-</div>
-<script>
-    // Data for modals (rich, detailed, can be expanded later)
-    const modalProjects = [
-        {
-            title: 'EcoQuartier Rive Verte',
-            description: "Le projet vise à réconcilier ville et nature grâce à une mosaïque de micro-habitats, une gestion innovante des eaux pluviales, des espaces partagés végétalisés, et un urbanisme centré sur l’humain. Concertation avec riverains & ateliers participatifs inclus.",
-            extra: "<b>Concept-clefs:</b>\nMobilités douces, solutions fondées sur la nature, verdissement intensif, jardins pédagogiques, toitures végétalisées, énergies renouvelables, mixité sociale.\n<b>Partenaires:</b> Ville, architectes, associations locales. <br><br>Ce projet fait l’objet d’un suivi écologique et d’animations régulières auprès des habitants (ateliers enfants, jardins collectifs, parcours biodiversité, etc.)."
-        },
-        {
-            title: 'Parc linéaire du Renouveau',
-            description: "Renaturation d’une friche et transformation en corridor écologique. Parcours sensoriels, pontons, mobilier recyclé, plateforme d’agriculture urbaine, valorisation mémoire industrielle (parcours historique et expositions).\n<b>Étapes réalisées:</b> Diagnostic biodiversité, stratégie de gestion différenciée, animation associative.",
-            extra: "<b>Atouts:</b>\nGestion hydraulique naturelle (noues, zone humide restaurée), sentiers piétons-vélos, aires sportives, belvédère urbain, fauche tardive, nouveau lien entre deux quartiers.<br><br>Le parc est conçu comme support de reconnexion sociale et de santé, avec de nombreux ateliers familiaux saisonniers."
-        },
-        {
-            title: 'Bouleversement Place Centrale',
-            description: "Ré-imaginer une place centrale : piétonnisation, événements artistiques, marchés ponctuels, et mobilier urbain écoresponsable.\n<b>Principes:</b> Accessibilité universelle, convivialité, connecteurs verts, gestion microclimatique.",
-            extra: "<b>Innovations:</b>\nFontaines à circulation fermée pour économie d’eau, programme d’ombrage dense/végétal, ‘micro-places’ à thématique variable, pilotage numérique participatif.\n<b>Impact:</b> Hausse de la fréquentation, retour positif des usagers, attractivité renouvelée du cœur de ville."
-        },
-        {
-            title: 'Résilience Quartier Lumière',
-            description: "Un plan-guide pour renforcer la résilience urbaine : création de corridors verts-bleus, gestion adaptative du bâti, implication scolaire, flexibilité d’usages publics. Tracks inondation/îlot de chaleur, ateliers citoyen à chaque étape.",
-            extra: "<b>Focus:</b>\nCartographie précise des vulnérabilités, outils de suivi climatique, ‘laboratoire de rue’ pour tester nouveaux usages, espaces modulables.<br><br>Le quartier sert de pilote à la stratégie climat de la ville avec des bilans réguliers et ‘assemblées d’habitants’."
-        }
-    ];
-    function openModal(index) {
-        document.getElementById('modalTitle').innerHTML = modalProjects[index].title;
-        document.getElementById('modalDescription').innerHTML = modalProjects[index].description;
-        document.getElementById('modalExtra').innerHTML = modalProjects[index].extra;
-        document.getElementById('modalBackground').classList.add('active');
-    }
-    function closeModal() {
-        document.getElementById('modalBackground').classList.remove('active');
-    }
-    // Keyboard shortcut to close modal
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') { closeModal(); }
-    });
-</script>
+  </section>
+  <!-- Modal (infrastructure) unchanged, dynamic behavior remains, may be set up by original JS -->
+  <div class="modal-bg" id="modalBackground">
+      <div class="modal" id="modalContent">
+          <button class="close-btn" onclick="closeModal()">×</button>
+          <h3 id="modalTitle"></h3>
+          <div id="modalDescription"></div>
+          <div class="modal-content-large" id="modalExtra"></div>
+      </div>
+  </div>
+  <script>
+      // Data for modals (identique à l'original)
+      const modalProjects = [
+          {
+              title: 'EcoQuartier Rive Verte',
+              description: "Le projet vise à réconcilier ville et nature grâce à une mosaïque de micro-habitats, une gestion innovante des eaux pluviales, des espaces partagés végétalisés, et un urbanisme centré sur l’humain. Concertation avec riverains & ateliers participatifs inclus.",
+              extra: "<b>Concept-clefs:</b>\nMobilités douces, solutions fondées sur la nature, verdissement intensif, jardins pédagogiques, toitures végétalisées, énergies renouvelables, mixité sociale.\n<b>Partenaires:</b> Ville, architectes, associations locales. <br><br>Ce projet fait l’objet d’un suivi écologique et d’animations régulières auprès des habitants (ateliers enfants, jardins collectifs, parcours biodiversité, etc.)."
+          },
+          {
+              title: 'Parc linéaire du Renouveau',
+              description: "Renaturation d’une friche et transformation en corridor écologique. Parcours sensoriels, pontons, mobilier recyclé, plateforme d’agriculture urbaine, valorisation mémoire industrielle (parcours historique et expositions).\n<b>Étapes réalisées:</b> Diagnostic biodiversité, stratégie de gestion différenciée, animation associative.",
+              extra: "<b>Atouts:</b>\nGestion hydraulique naturelle (noues, zone humide restaurée), sentiers piétons-vélos, aires sportives, belvédère urbain, fauche tardive, nouveau lien entre deux quartiers.<br><br>Le parc est conçu comme support de reconnexion sociale et de santé, avec de nombreux ateliers familiaux saisonniers."
+          },
+          {
+              title: 'Bouleversement Place Centrale',
+              description: "Ré-imaginer une place centrale : piétonnisation, événements artistiques, marchés ponctuels, et mobilier urbain écoresponsable.\n<b>Principes:</b> Accessibilité universelle, convivialité, connecteurs verts, gestion microclimatique.",
+              extra: "<b>Innovations:</b>\nFontaines à circulation fermée pour économie d’eau, programme d’ombrage dense/végétal, ‘micro-places’ à thématique variable, pilotage numérique participatif.\n<b>Impact:</b> Hausse de la fréquentation, retour positif des usagers, attractivité renouvelée du cœur de ville."
+          },
+          {
+              title: 'Résilience Quartier Lumière',
+              description: "Un plan-guide pour renforcer la résilience urbaine : création de corridors verts-bleus, gestion adaptative du bâti, implication scolaire, flexibilité d’usages publics. Tracks inondation/îlot de chaleur, ateliers citoyen à chaque étape.",
+              extra: "<b>Focus:</b>\nCartographie précise des vulnérabilités, outils de suivi climatique, ‘laboratoire de rue’ pour tester nouveaux usages, espaces modulables.<br><br>Le quartier sert de pilote à la stratégie climat de la ville avec des bilans réguliers et ‘assemblées d’habitants’."
+          }
+      ];
+      function openModal(index) {
+          document.getElementById('modalTitle').innerHTML = modalProjects[index].title;
+          document.getElementById('modalDescription').innerHTML = modalProjects[index].description;
+          document.getElementById('modalExtra').innerHTML = modalProjects[index].extra;
+          document.getElementById('modalBackground').classList.add('active');
+      }
+      function closeModal() {
+          document.getElementById('modalBackground').classList.remove('active');
+      }
+      document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') { closeModal(); }
+      });
+  </script>
+</main>
+<!-- Section de contact au bas de la page -->
+<section class="contact-section">
+  <h2>Contact</h2>
+  <div class="contact-links">
+    <a href="https://linkedin.com/in/lorenzomorel" class="contact-link" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:contact@lorenzomorel.fr" class="contact-link">Email</a>
+  </div>
+</section>
 </body>
 </html>
