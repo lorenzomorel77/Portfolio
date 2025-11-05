@@ -7,7 +7,7 @@
   <style>
     body { background: #fff; font-family: Arial, sans-serif; color:#222; margin:0; }
     header { background: #215c2e; color: white; padding: 30px 10px 16px 10px; text-align: center; }
-    main { max-width: 900px; margin: 22px auto 0 auto; padding: 0 9px; }
+    main { max-width: 1100px; margin: 22px auto 0 auto; padding: 0 9px; }
     h1 { margin:0 0 10px 0; font-weight:700; }
     nav { margin-top:12px;}
     nav a { color:#215c2e; text-decoration:none; margin:0 18px; font-weight:bold;}
@@ -20,9 +20,10 @@
       font-weight: 700;
       text-align: center;
     }
+    /* À propos étalé */
     #about-text {
       text-align: center;
-      max-width: 700px;
+      max-width: 950px;         /* <<< largeur augmentée pour moins de lignes */
       margin: 0 auto;
       font-size: 1.07em;
       line-height: 1.7;
@@ -42,9 +43,9 @@
     .contact-btns a { display:inline-block; padding:10px 26px; color:#fff; background:#215c2e; border-radius:8px; text-decoration:none; font-weight:bold; font-size:1.05em; transition:background .2s;}
     .contact-btns a:hover { background: #288141;}
     footer { text-align: center; font-size:15px; color: #666; margin:38px 0 0; }
-    @media(max-width:650px){
+    @media(max-width:800px){
+      #about-text { max-width: 96vw; }
       .project-grid{flex-direction:column;}
-      #about-text{padding:13px;}
       .contact-btns a{padding:10px 15px;}
     }
     /* Modal */
